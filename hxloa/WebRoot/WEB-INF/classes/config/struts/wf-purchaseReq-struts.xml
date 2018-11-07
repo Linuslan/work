@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="purchaseReq" namespace="/workflow/purchaseReq" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="queryAuditedPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/purchaseReq/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/purchaseReq/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/purchaseReq/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/purchaseReq/Audit.jsp</result>
+		</action>
+		<action name="queryContentsByPurchaseReqId" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="queryContentsByPurchaseReqId"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="audit"></action>
+		<action name="delContentById" class="com.linuslan.oa.workflow.flows.purchaseReq.action.PurchaseReqAction" method="delContentById"></action>
+	</package>
+</struts>

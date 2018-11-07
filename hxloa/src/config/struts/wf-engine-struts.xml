@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="flow" namespace="/workflow/flow" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.engine.flow.action.FlowAction" method="queryPage">
+			<result name="success">/com/linuslan/oa/workflow/engine/List.jsp</result>
+		</action>
+		<action name="queryById" class="com.linuslan.oa.workflow.engine.flow.action.FlowAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/engine/Add.jsp</result>
+			<result name="update">/com/linuslan/oa/workflow/engine/Edit.jsp</result>
+			<result name="query">/com/linuslan/oa/workflow/engine/View.jsp</result>
+			<result name="assignCompany">/com/linuslan/oa/workflow/engine/AssignCompany.jsp</result>
+		</action>
+		<action name="add" class="com.linuslan.oa.workflow.engine.flow.action.FlowAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.engine.flow.action.FlowAction" method="update"></action>
+		<action name="delById" class="com.linuslan.oa.workflow.engine.flow.action.FlowAction" method="delById"></action>
+		<action name="init" class="com.linuslan.oa.workflow.engine.flow.action.FlowAction" method="init"></action>
+		<action name="assignCompany" class="com.linuslan.oa.workflow.engine.flow.action.FlowAction" method="assignCompany"></action>
+	</package>
+</struts>

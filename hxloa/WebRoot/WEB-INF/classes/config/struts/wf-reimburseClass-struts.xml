@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="reimburseClass" namespace="/workflow/reimburseClass" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseClassAction" method="queryPage"></action>
+		<action name="queryPageBySql" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseClassAction" method="queryPageBySql"></action>
+		<action name="queryAll" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseClassAction" method="queryAll"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseClassAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/reimburseClass/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/reimburseClass/Edit.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseClassAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseClassAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseClassAction" method="del"></action>
+	</package>
+</struts>

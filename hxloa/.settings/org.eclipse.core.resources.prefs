@@ -1,0 +1,12 @@
+#Mon May 30 11:19:13 CST 2016
+eclipse.preferences.version=1
+encoding//WebRoot/com/linuslan/oa/system/user/Fire.jsp=UTF-8
+encoding//WebRoot/com/linuslan/oa/system/user/updatePassword.jsp=UTF-8
+encoding//WebRoot/com/linuslan/oa/workflow/engine/Add.jsp=UTF-8
+encoding//WebRoot/com/linuslan/oa/workflow/engine/Edit.jsp=UTF-8
+encoding//WebRoot/com/linuslan/oa/workflow/engine/List.jsp=UTF-8
+encoding//WebRoot/login.jsp=UTF-8
+encoding//WebRoot/resources/javascript/plugins/datagrid/datagrid.js=UTF-8
+encoding//src/com/linuslan/oa/filter/LoginFilter.java=UTF-8
+encoding//src/com/linuslan/oa/servlet/RandomValidateCode.java=UTF-8
+encoding/<project>=UTF-8

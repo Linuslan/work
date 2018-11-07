@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="article" namespace="/workflow/article" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="queryPage"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/article/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/article/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/article/View.jsp</result>
+		</action>
+		<action name="queryCheckinArticlesByCompanyId" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="queryCheckinArticlesByCompanyId"></action>
+		<action name="queryFormatsByArticleId" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="queryFormatsByArticleId"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="del"></action>
+		<action name="delFormatById" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="delFormatById"></action>
+		<action name="queryCheckoutArticlePage" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="queryCheckoutArticlePage"></action>
+		<action name="queryCheckoutArticles" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="queryCheckoutArticles"></action>
+		<action name="queryCheckoutArticleById" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="queryCheckoutArticleById">
+			<result name="add">/com/linuslan/oa/workflow/article/checkout/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/article/checkout/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/article/checkout/View.jsp</result>
+		</action>
+		<action name="addCheckoutArticle" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="addCheckoutArticle"></action>
+		<action name="updateCheckoutArticle" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="updateCheckoutArticle"></action>
+		<action name="delCheckoutArticle" class="com.linuslan.oa.workflow.flows.article.action.ArticleAction" method="delCheckoutArticle"></action>
+	</package>
+</struts>

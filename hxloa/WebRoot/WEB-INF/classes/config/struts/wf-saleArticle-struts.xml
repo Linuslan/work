@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="saleArticle" namespace="/workflow/saleArticle" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="queryPage"></action>
+		<action name="queryAllSaleArticles" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="queryAllSaleArticles"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/saleArticle/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/saleArticle/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/saleArticle/View.jsp</result>
+		</action>
+		<action name="querySaleArticlesByCompanyId" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="querySaleArticlesByCompanyId"></action>
+		<action name="queryMaterialFormatsByArticleId" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="queryMaterialFormatsByArticleId"></action>
+		<action name="queryMaterialsByArticleId" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="queryMaterialsByArticleId"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="del"></action>
+		<action name="delMaterialFormatById" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="delMaterialFormatById"></action>
+		<action name="delMaterialById" class="com.linuslan.oa.workflow.flows.saleArticle.action.SaleArticleAction" method="delMaterialById"></action>
+	</package>
+</struts>

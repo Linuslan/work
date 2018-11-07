@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="invoice" namespace="/workflow/invoice" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="queryAuditedPage"></action>
+		<action name="queryReportPage" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="queryReportPage"></action>
+		<action name="sumReportPage" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="sumReportPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/invoice/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/invoice/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/invoice/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/invoice/Audit.jsp</result>
+			<result name="invoice">/com/linuslan/oa/workflow/invoice/InvoiceAudit.jsp</result>
+			<result name="restream">/com/linuslan/oa/workflow/invoice/RestreamAudit.jsp</result>
+			<result name="ceo">/com/linuslan/oa/workflow/invoice/CEOAudit.jsp</result>
+			<result name="print">/com/linuslan/oa/workflow/invoice/Print.jsp</result>
+		</action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.invoice.action.InvoiceAction" method="audit"></action>
+	</package>
+</struts>

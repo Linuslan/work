@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="effect" namespace="/workflow/effect" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.saleStuff.action.EffectAction" method="queryPage"></action>
+		<action name="queryAll" class="com.linuslan.oa.workflow.flows.saleStuff.action.EffectAction" method="queryAll"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.saleStuff.action.EffectAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/saleStuff/effect/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/saleStuff/effect/Edit.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.saleStuff.action.EffectAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.saleStuff.action.EffectAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.saleStuff.action.EffectAction" method="del"></action>
+		<action name="authorize" class="com.linuslan.oa.workflow.flows.saleStuff.action.EffectAction" method="authorize"></action>
+	</package>
+	
+	<package name="face" namespace="/workflow/face" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.saleStuff.action.FaceAction" method="queryPage"></action>
+		<action name="queryAll" class="com.linuslan.oa.workflow.flows.saleStuff.action.FaceAction" method="queryAll"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.saleStuff.action.FaceAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/saleStuff/face/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/saleStuff/face/Edit.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.saleStuff.action.FaceAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.saleStuff.action.FaceAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.saleStuff.action.FaceAction" method="del"></action>
+		<action name="authorize" class="com.linuslan.oa.workflow.flows.saleStuff.action.FaceAction" method="authorize"></action>
+	</package>
+	
+	<package name="glossiness" namespace="/workflow/glossiness" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.saleStuff.action.GlossinessAction" method="queryPage"></action>
+		<action name="queryAll" class="com.linuslan.oa.workflow.flows.saleStuff.action.GlossinessAction" method="queryAll"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.saleStuff.action.GlossinessAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/saleStuff/glossiness/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/saleStuff/glossiness/Edit.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.saleStuff.action.GlossinessAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.saleStuff.action.GlossinessAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.saleStuff.action.GlossinessAction" method="del"></action>
+		<action name="authorize" class="com.linuslan.oa.workflow.flows.saleStuff.action.GlossinessAction" method="authorize"></action>
+	</package>
+	
+	<package name="articleUnit" namespace="/workflow/articleUnit" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.saleStuff.action.ArticleUnitAction" method="queryPage"></action>
+		<action name="queryAll" class="com.linuslan.oa.workflow.flows.saleStuff.action.ArticleUnitAction" method="queryAll"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.saleStuff.action.ArticleUnitAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/saleStuff/articleUnit/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/saleStuff/articleUnit/Edit.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.saleStuff.action.ArticleUnitAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.saleStuff.action.ArticleUnitAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.saleStuff.action.ArticleUnitAction" method="del"></action>
+		<action name="authorize" class="com.linuslan.oa.workflow.flows.saleStuff.action.ArticleUnitAction" method="authorize"></action>
+	</package>
+</struts>

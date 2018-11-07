@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="menu" namespace="/sys/menu" extends="struts-default">
+		<action name="index" class="com.linuslan.oa.system.menu.action.MenuAction" method="index">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="queryTree" class="com.linuslan.oa.system.menu.action.MenuAction" method="queryTree">
+			<result name="success">/com/linuslan/oa/system/menu/List.jsp</result>
+		</action>
+		<action name="queryAuthorizeTree" class="com.linuslan.oa.system.menu.action.MenuAction" method="queryAuthorizeTree"></action>
+		<action name="queryById" class="com.linuslan.oa.system.menu.action.MenuAction" method="queryById">
+			<result name="edit">/com/linuslan/oa/system/menu/Edit.jsp</result>
+		</action>
+		<action name="add" class="com.linuslan.oa.system.menu.action.MenuAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.system.menu.action.MenuAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.system.menu.action.MenuAction" method="del"></action>
+	</package>
+</struts>

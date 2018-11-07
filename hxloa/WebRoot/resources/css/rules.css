@@ -1,0 +1,55 @@
+.actGotop{position:fixed;top:0;margin:380px 0 0 0;right:5px;width:150px;height:195px;display:none;}
+*html .actGotop{position:absolute;top:expression(eval(document.documentElement.scrollTop));}
+.actGotop a,.actGotop a:link{width:150px;height:195px;display:inline-block;background:url(../css/oaimg/blog7year_gotop.png) no-repeat;_background:url(../css/oaimg/blog7year_gotop.gif) no-repeat;outline:none;}
+.actGotop a:hover{width:150px;height:195px;background:url(../css/oaimg/blog7year_gotopd.gif) no-repeat;outline:none;}
+body {
+	-moz-user-select:none;
+}
+
+a {
+	text-decoration: none;
+}
+a:link{text-decoration: none; color: black;}
+a:visited {text-decoration: none; color: black;}
+a:hover {text-decoration: underline; color: highlight;}
+a:active {text-decoration: none; color: black;}
+.rules {
+	/*background-color: rgb(225, 249, 255);*/
+	background-color: aliceblue;
+	padding: 40px;
+	border-radius: 6px;
+}
+div {
+	line-height: 35px;
+}
+ul.left-arrow {
+	/*list-style-image: url(../css/oaimg/arrow-left-red.png);*/
+	list-style: url(../css/oaimg/arrow-left-red.png);
+}
+ul.up-arrow-black {
+	/*list-style-image: url(../css/oaimg/arrow-left-red.png);*/
+	list-style: url(../css/oaimg/arrow-up-black.png);
+}
+ul.decimal {
+	/*list-style-type: decimal*/
+	list-style: decimal;
+}
+ul.none {
+	/*list-style-type: none;*/
+	list-style: none;
+	padding: 2px;
+}
+ul.init-none {
+	/*list-style-type: none;*/
+	list-style: none;
+}
+ul.upper-latin {
+	/*list-style-type: upper-latin;*/
+	list-style: upper-latin;
+}
+ul.lower-latin {
+	list-style: lower-latin;
+}
+ul.circle {
+	list-style: circle;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="leave" namespace="/workflow/leave" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="queryAuditedPage"></action>
+		<action name="queryReportPage" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="queryReportPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/leave/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/leave/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/leave/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/leave/Audit.jsp</result>
+		</action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="audit"></action>
+		<action name="countLeaveDuration" class="com.linuslan.oa.workflow.flows.leave.action.LeaveAction" method="countLeaveDuration"></action>
+	</package>
+</struts>

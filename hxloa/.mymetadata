@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="hxloa"
+  id="myeclipse.1456751684679"
+  context-root="/hxloa"
+  j2ee-spec="6.0"
+  archive="hxloa.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

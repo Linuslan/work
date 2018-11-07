@@ -1,0 +1,152 @@
+.treegrid {
+	padding: 5px;
+	overflow: hidden;
+}
+.treegrid table {
+	margin: 0px;
+	padding: 0px;
+	table-layout:fixed;
+	border-collapse: separate;
+	border-spacing: 0px;
+}
+.treegrid table td {
+	height: 35px;
+	line-height: 35px;
+}
+
+.treegrid table .left-border {
+	border-left: 1px solid #CDCDCD;
+}
+.treegrid table .left-dotted-border {
+	border-left: 1px dotted #CDCDCD;
+}
+
+.treegrid table .right-border {
+	border-right: 1px solid #CDCDCD;
+}
+.treegrid table .right-dotted-border {
+	border-right: 1px dotted #CDCDCD;
+}
+
+.treegrid table .top-border {
+	border-top: 1px solid #CDCDCD;
+}
+.treegrid table .top-dotted-border {
+	border-top: 1px dotted #CDCDCD;
+}
+
+.treegrid table .bottom-border {
+	border-bottom: 1px solid #CECECE;
+}
+.treegrid table .bottom-dotted-border {
+	border-bottom: 1px dotted #CECECE;
+}
+
+.treegrid .odd {
+	background: #fff;
+}
+
+.treegrid .even {
+	background: #CDCDCD;
+}
+
+.tree-indent, .tree-expanded, .tree-folder, .tree-folder-open,
+.tree-file, .tree-checkbox, .tree-collapsed {
+	display: inline-block;
+	width: 16px;
+	height: 18px;
+	overflow: hidden;
+}
+.tree-expanded {
+	background: url(images/tree-icons.png) no-repeat -18px 0px;
+}
+.tree-collapsed {
+	background: url(images/tree-icons.png) no-repeat 0 0;
+}
+.tree-folder {
+	background: url(images/tree-icons.png) no-repeat -208px 0px;
+}
+.tree-file {
+	background: url(images/tree-icons.png) no-repeat -240px 0px;
+}
+.tree-folder-open {
+	background: url(images/tree-icons.png) no-repeat -224px 0px;
+}
+
+.treegrid-frozen-container, .treegrid-fixed-container {
+	float: left;
+}
+
+.treegrid-fixed-container>.treegrid-fixed-container-header>.treegrid-fixed-container-header-table,
+.treegrid-frozen-container>.treegrid-frozen-container-header>.treegrid-frozen-container-header-table {
+	background-color: #efefef;
+	/*background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#fdfdfd), to(#eaeaea));
+	background-image: -webkit-linear-gradient(top, #fdfdfd 0%, #eaeaea 100%);
+    background-image: -moz-linear-gradient(top, #fdfdfd 0%, #eaeaea 100%);
+    background-image: -ms-linear-gradient(top, #fdfdfd 0%, #eaeaea 100%);
+    background-image: -o-linear-gradient(top, #fdfdfd 0%, #eaeaea 100%);
+    background-image: -linear-gradient(top, #fdfdfd 0%, #eaeaea 100%);*/
+    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#ffffff), to(#F9F9F9));
+	background-image: -webkit-linear-gradient(top, #ffffff 0%, #F9F9F9 100%);
+    background-image: -moz-linear-gradient(top, #ffffff 0%, #F9F9F9 100%);
+    background-image: -ms-linear-gradient(top, #ffffff 0%, #F9F9F9 100%);
+    background-image: -o-linear-gradient(top, #ffffff 0%, #F9F9F9 100%);
+    background-image: -linear-gradient(top, #ffffff 0%, #F9F9F9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#F9F9F9',GradientType=0 ); /* IE6-9 */
+    /*overflow: hidden;*/
+    /*width: 100%;*/
+}
+
+.treegrid-fixed-container>.treegrid-fixed-container-header>table,
+.treegrid-frozen-container>.treegrid-frozen-container-header>table {
+	
+}
+
+.treegrid-frozen-container>.treegrid-frozen-container-body {
+	overflow: hidden;
+}
+
+.treegrid-fixed-container>.treegrid-fixed-container-header>table>thead>tr>th,
+.treegrid-frozen-container>.treegrid-frozen-container-header>table>thead>tr>th {
+	word-break: break-all;
+	padding: 8px 0px;
+}
+
+.treegrid-fixed-container>.treegrid-fixed-container-body>table>tbody>tr>td,
+.treegrid-frozen-container>.treegrid-frozen-container-body>table>tbody>tr>td {
+	word-break: break-all;
+	height: 35px;
+	line-height: 35px;
+}
+
+.hover-tr{
+	background-color: #dfe8f6;
+}
+.select-tr {
+	background-color: #3c8dbc;
+}
+.select-tr>td {
+	color: white;
+}
+.treegrid .checkbox, .treegrid .checkedbox {
+	display: inline-block;
+	width: 16px;
+	height: 18px;
+	vertical-align: middle;
+	overflow: hidden;
+}
+.treegrid .checkbox {
+	background: url("images/tree-icons.png") no-repeat center center;
+	background-position: -208px -20px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.treegrid .checkedbox {
+	background: url("images/tree-icons.png") no-repeat center center;
+	background-position: -224px -20px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+}

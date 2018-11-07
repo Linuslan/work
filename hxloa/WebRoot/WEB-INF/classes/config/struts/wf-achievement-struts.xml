@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="achievement" namespace="/workflow/achievement" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="queryAuditedPage"></action>
+		<action name="queryScorePage" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="queryScorePage"></action>
+		<action name="queryReportPage" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="queryReportPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/achievement/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/achievement/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/achievement/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/achievement/Audit.jsp</result>
+			<result name="selfScore">/com/linuslan/oa/workflow/achievement/SelfScore.jsp</result>
+			<result name="leaderScore">/com/linuslan/oa/workflow/achievement/LeaderScore.jsp</result>
+			<result name="finish">/com/linuslan/oa/workflow/achievement/Finish.jsp</result>
+		</action>
+		<action name="queryContentsByAchievementId" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="queryContentsByAchievementId"></action>
+		<action name="queryContentOpinionsByContentId" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="queryContentOpinionsByContentId"></action>
+		<action name="checkExistByDate" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="checkExistByDate"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="audit"></action>
+		<action name="auditBatch" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="auditBatch"></action>
+		<action name="delContentById" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="delContentById"></action>
+		<action name="exportYearAchievement" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="exportYearAchievement"></action>
+		<action name="copy" class="com.linuslan.oa.workflow.flows.achievement.action.AchievementAction" method="copy"></action>
+	</package>
+</struts>

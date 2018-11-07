@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="userContract" namespace="/sys/userContract" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.system.userContract.action.UserContractAction" method="queryPage"></action>
+		<action name="initContent" class="com.linuslan.oa.system.userContract.action.UserContractAction" method="initContent">
+			<result name="add">/com/linuslan/oa/system/userContract/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/system/userContract/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/system/userContract/View.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.system.userContract.action.UserContractAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.system.userContract.action.UserContractAction" method="add"></action>
+		<action name="delById" class="com.linuslan.oa.system.userContract.action.UserContractAction" method="delById"></action>
+	</package>
+</struts>

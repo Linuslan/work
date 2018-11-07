@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="rule" namespace="/sys/rule" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.system.rule.action.RuleAction" method="queryPage"></action>
+		<action name="queryAll" class="com.linuslan.oa.system.rule.action.RuleAction" method="queryAll"></action>
+		<action name="queryById" class="com.linuslan.oa.system.rule.action.RuleAction" method="queryById">
+			<result name="view">/com/linuslan/oa/system/rule/View.jsp</result>
+			<result name="add">/com/linuslan/oa/system/rule/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/system/rule/Edit.jsp</result>
+			<result name="viewer">/resources/office/web/viewer.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.system.rule.action.RuleAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.system.rule.action.RuleAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.system.rule.action.RuleAction" method="del"></action>
+	</package>
+</struts>

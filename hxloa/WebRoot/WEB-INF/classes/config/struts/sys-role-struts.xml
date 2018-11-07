@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="role" namespace="/sys/role" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.system.role.action.RoleAction" method="queryPage"></action>
+		<action name="queryById" class="com.linuslan.oa.system.role.action.RoleAction" method="queryById">
+			<result name="add">/com/linuslan/oa/system/role/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/system/role/Edit.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.system.role.action.RoleAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.system.role.action.RoleAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.system.role.action.RoleAction" method="del"></action>
+		<action name="authorize" class="com.linuslan.oa.system.role.action.RoleAction" method="authorize"></action>
+	</package>
+</struts>

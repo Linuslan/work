@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="checkout" namespace="/workflow/checkout" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="queryAuditedPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/checkout/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/checkout/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/checkout/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/checkout/Audit.jsp</result>
+		</action>
+		<action name="queryContentsByCheckoutId" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="queryContentsByCheckoutId"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="audit"></action>
+		<action name="delContentById" class="com.linuslan.oa.workflow.flows.checkout.action.CheckoutAction" method="delContentById"></action>
+	</package>
+</struts>

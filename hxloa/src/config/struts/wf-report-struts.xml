@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="report" namespace="/workflow/report" extends="struts-default">
+		<action name="queryStockReportPage" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="queryStockReportPage"></action>
+		<action name="queryStockDetailReportPage" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="queryStockDetailReportPage"></action>
+		<action name="querySaleReportPage" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="querySaleReportPage"></action>
+		<action name="querySaleDetailReportPage" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="querySaleDetailReportPage"></action>
+		<action name="queryPaybackDetailReportPage" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="queryPaybackDetailReportPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/report/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/report/Edit.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="del"></action>
+		<action name="authorize" class="com.linuslan.oa.workflow.flows.report.action.ReportAction" method="authorize"></action>
+	</package>
+</struts>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="socialInsurance" namespace="/workflow/socialInsurance" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="queryAuditedPage"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/socialInsurance/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/socialInsurance/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/socialInsurance/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/socialInsurance/Audit.jsp</result>
+		</action>
+		<action name="queryContentsBySocialInsuranceId" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="queryContentsBySocialInsuranceId"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="audit"></action>
+		<action name="delContentById" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="delContentById"></action>
+		<action name="delContentInIds" class="com.linuslan.oa.workflow.flows.socialInsurance.action.SocialInsuranceAction" method="delContentInIds"></action>
+	</package>
+</struts>

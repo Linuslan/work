@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="cellphone" namespace="/sys/cellphone" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.system.cellphone.action.CellphoneAction" method="queryPage"></action>
+		<action name="queryAll" class="com.linuslan.oa.system.cellphone.action.CellphoneAction" method="queryAll"></action>
+		<action name="queryById" class="com.linuslan.oa.system.cellphone.action.CellphoneAction" method="queryById">
+			<result name="add">/com/linuslan/oa/system/cellphone/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/system/cellphone/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/system/cellphone/View.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.system.cellphone.action.CellphoneAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.system.cellphone.action.CellphoneAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.system.cellphone.action.CellphoneAction" method="del"></action>
+	</package>
+</struts>

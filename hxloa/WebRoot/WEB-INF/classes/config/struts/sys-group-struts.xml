@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="group" namespace="/sys/group" extends="struts-default">
+		<action name="queryTree" class="com.linuslan.oa.system.group.action.GroupAction" method="queryTree"></action>
+		<action name="queryById" class="com.linuslan.oa.system.group.action.GroupAction" method="queryById">
+			<result name="add">/com/linuslan/oa/system/group/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/system/group/Edit.jsp</result>
+		</action>
+		<action name="add" class="com.linuslan.oa.system.group.action.GroupAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.system.group.action.GroupAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.system.group.action.GroupAction" method="del"></action>
+	</package>
+</struts>

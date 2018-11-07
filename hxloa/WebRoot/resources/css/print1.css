@@ -1,0 +1,98 @@
+/*
+***TABLEÑùÊ½
+**/
+
+table{
+ empty-cells:show; 
+ border-collapse: collapse;
+ margin:0 auto;
+ font-size:12px;
+ line-height: 20px;
+ border: 0px;
+}
+table td {
+	border: 0px;
+	padding: 5px;
+	font-size: 14px;
+	text-align: left;
+}
+.align-left {
+	text-align: left;
+}
+.align-right {
+	text-align: right;
+}
+.align-center {
+	text-align: center;
+}
+
+.tab_css_2{
+ border: 1px solid #cad9ea;
+ border-collapse: collapse;
+ color:#000;
+}
+.tab_css_2 th {
+ background-image: url(oaimg/th_bg1.gif);
+ background-repeat::repeat-x;
+ height:40px;
+ color:#000;
+}
+.tab_css_2 td{
+ border-bottom:1px solid #cad9ea;
+ border-right: 1px solid #cad9ea;
+ padding:0 10px 0;
+}
+.tab_css_2 th{
+ border:1px solid #a7d1fd;
+ padding:0 2px 0;
+}
+.tab_css_2 tr.tr_css td{
+ /*background-color:#eef4f5;*/
+ background-color:#eaf4ff;
+}
+
+.tab_css_2 td{
+ height:40px;
+ text-align:left;
+ overflow: visible;
+}
+.tab_css_2_list th {
+ height:auto;
+}
+.tab_css_2_list td {
+ height:auto;
+ text-align:left;
+ overflow: visible;
+}
+.tab_css_2 tr .td-right {
+	text-align: right;
+	/*width: 20%;*/
+	padding: 0;
+}
+
+.tab_css_2 tr .td-center {
+	text-align: center;
+	/*width: 20%;*/
+	padding: 5px;
+}
+
+.print_bg {
+	background-color: white;
+	overflow:auto;
+	height: 99%;
+	width: 100%;
+}
+
+.print_pageContent {
+	border-style:solid;
+	border-width:0 1px;
+	border-color: #cad9ea;
+	background-color:#fff;
+	height: 99%;
+	width: 100%;
+}
+
+.print_body {
+	overflow-y: auto;
+	background-color: white;
+}

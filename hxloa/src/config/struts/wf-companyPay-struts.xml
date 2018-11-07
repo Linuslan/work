@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="companyPay" namespace="/workflow/companyPay" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="queryAuditedPage"></action>
+		<action name="queryReportPage" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="queryReportPage"></action>
+		<action name="sumReportPage" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="sumReportPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/companyPay/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/companyPay/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/companyPay/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/companyPay/Audit.jsp</result>
+			<result name="print">/com/linuslan/oa/workflow/companyPay/Print.jsp</result>
+		</action>
+		<action name="queryPrintList" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="queryPrintList">
+			<result name="success">/com/linuslan/oa/workflow/companyPay/PrintList.jsp</result>
+		</action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.companyPay.action.CompanyPayAction" method="audit"></action>
+	</package>
+</struts>

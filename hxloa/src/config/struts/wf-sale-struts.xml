@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="sale" namespace="/workflow/sale" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="queryAuditedPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/sale/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/sale/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/sale/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/sale/Audit.jsp</result>
+			<result name="invoiceAudit">/com/linuslan/oa/workflow/sale/InvoiceAudit.jsp</result>
+			<result name="restreamAudit">/com/linuslan/oa/workflow/sale/RestreamAudit.jsp</result>
+			<result name="checkoutAudit">/com/linuslan/oa/workflow/sale/CheckoutAudit.jsp</result>
+			<result name="stockmanAudit">/com/linuslan/oa/workflow/sale/StockmanAudit.jsp</result>
+		</action>
+		<action name="queryContentsBySaleId" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="queryContentsBySaleId"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="audit"></action>
+		<action name="delContentById" class="com.linuslan.oa.workflow.flows.sale.action.SaleAction" method="delContentById"></action>
+	</package>
+</struts>

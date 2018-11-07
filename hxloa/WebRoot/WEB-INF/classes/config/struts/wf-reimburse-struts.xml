@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="reimburse" namespace="/workflow/reimburse" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="queryAuditedPage"></action>
+		<action name="queryReportPage" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="queryReportPage"></action>
+		<action name="sumReportPage" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="sumReportPage"></action>
+		<action name="initSelect" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/reimburse/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/reimburse/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/reimburse/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/reimburse/Audit.jsp</result>
+			<result name="print">/com/linuslan/oa/workflow/reimburse/Print.jsp</result>
+		</action>
+		<action name="queryPrintList" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="queryPrintList">
+			<result name="success">/com/linuslan/oa/workflow/reimburse/PrintList.jsp</result>
+		</action>
+		<action name="queryContentsByReimburseId" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="queryContentsByReimburseId"></action>
+		<action name="queryReimburseClassesByDepartmentId" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="queryReimburseClassesByDepartmentId"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="audit"></action>
+		<action name="delContentById" class="com.linuslan.oa.workflow.flows.reimburse.action.ReimburseAction" method="delContentById"></action>
+	</package>
+</struts>

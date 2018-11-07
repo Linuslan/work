@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="uploadFile" namespace="/sys/uploadFile" extends="struts-default">
+		<action name="del" class="com.linuslan.oa.system.upload.action.UploadFileAction" method="del"></action>
+		<action name="download" class="com.linuslan.oa.system.upload.action.UploadFileAction" method="download"></action>
+	</package>
+</struts>

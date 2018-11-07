@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="salary" namespace="/workflow/salary" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="queryPage"></action>
+		<action name="queryAuditPage" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="queryAuditPage"></action>
+		<action name="queryAuditedPage" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="queryAuditedPage"></action>
+		<action name="queryReportPage" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="queryReportPage"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/salary/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/salary/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/workflow/salary/View.jsp</result>
+			<result name="audit">/com/linuslan/oa/workflow/salary/Audit.jsp</result>
+			<result name="invoiceAudit">/com/linuslan/oa/workflow/salary/InvoiceAudit.jsp</result>
+			<result name="restreamAudit">/com/linuslan/oa/workflow/salary/RestreamAudit.jsp</result>
+			<result name="checkoutAudit">/com/linuslan/oa/workflow/salary/CheckoutAudit.jsp</result>
+			<result name="stockmanAudit">/com/linuslan/oa/workflow/salary/StockmanAudit.jsp</result>
+		</action>
+		<action name="queryContentsBySalaryId" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="queryContentsBySalaryId"></action>
+		<action name="queryContentByUserId" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="queryContentByUserId"></action>
+		<action name="createSalary" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="createSalary"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="add"></action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="update"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="del"></action>
+		<action name="commit" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="commit"></action>
+		<action name="audit" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="audit"></action>
+		<action name="delContentById" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="delContentById"></action>
+		<action name="calculate" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="calculate"></action>
+		<action name="export" class="com.linuslan.oa.workflow.flows.salary.action.SalaryAction" method="export"></action>
+	</package>
+</struts>

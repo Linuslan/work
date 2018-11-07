@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="user" namespace="/sys/user" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.system.user.action.UserAction" method="queryPage"></action>
+		<action name="queryAllUsers" class="com.linuslan.oa.system.user.action.UserAction" method="queryAllUsers"></action>
+		<action name="initSelect" class="com.linuslan.oa.system.user.action.UserAction" method="initSelect"></action>
+		<action name="queryById" class="com.linuslan.oa.system.user.action.UserAction" method="queryById">
+			<result name="view">/com/linuslan/oa/system/user/View.jsp</result>
+			<result name="add">/com/linuslan/oa/system/user/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/system/user/Edit.jsp</result>
+			<result name="assignCompany">/com/linuslan/oa/system/user/AssignCompany.jsp</result>
+		</action>
+		<action name="checkLoginNameUnique" class="com.linuslan.oa.system.user.action.UserAction" method="checkLoginNameUnique"></action>
+		<action name="update" class="com.linuslan.oa.system.user.action.UserAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.system.user.action.UserAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.system.user.action.UserAction" method="del"></action>
+		<action name="queryUserPermissionResources" class="com.linuslan.oa.system.user.action.UserAction" method="queryUserPermissionResources">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="login" class="com.linuslan.oa.system.user.action.UserAction" method="login"></action>
+		<action name="logout" class="com.linuslan.oa.system.user.action.UserAction" method="logout"></action>
+		<action name="updatePassword" class="com.linuslan.oa.system.user.action.UserAction" method="updatePassword"></action>
+		<action name="assignCompany" class="com.linuslan.oa.system.user.action.UserAction" method="assignCompany"></action>
+		<action name="fire" class="com.linuslan.oa.system.user.action.UserAction" method="fire"></action>
+		<action name="resume" class="com.linuslan.oa.system.user.action.UserAction" method="resume"></action>
+	</package>
+</struts>

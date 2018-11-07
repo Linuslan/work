@@ -1,0 +1,209 @@
+body {
+	font-size: 62.5%;
+	font-family: "Arial", "Trebuchet MS", "Helvetica", "Verdana", "sans-serif";
+}
+
+a {
+	text-decoration: none;
+}
+
+table {
+	font-size: 1em;
+}
+
+.demo-description {
+	clear: both;
+	padding: 12px;
+	font-size: 1.3em;
+	line-height: 1.4em;
+}
+
+.ui-draggable, .ui-droppable {
+	background-position: top;
+}
+label {
+	font-size: 120%;
+}
+fieldset { padding:0; margin-top:25px; height: 40px;}
+button {
+	margin: 0 0 0 10;
+}
+font {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.search-div {
+	margin-top: 5px;
+	height: 70px;
+	margin: 0 auto;
+	width: 98%;
+}
+.grid-div { width: 100%; text-align: center; }
+.grid-div table { border-collapse: collapse; width: 99%; margin: 0 auto; }
+.grid-div table td { border: 1px solid #eee; padding: .6em 10px; text-align: center; font-size: 1em; }
+.grid-div table th { border: 1px solid #eee; padding: .6em 10px; text-align: center; font-size: 10; }
+.ui-dialog .ui-state-error { padding: .3em; }
+.validateTips { border: 1px solid transparent; padding: 0.3em; }
+
+input {
+	width: 95%;
+	height: 25px;
+	background: url(base/images/ui-bg_flat_75_ffffff_40x100.png) #ffffff repeat-x 50% 50%;
+	border: #4297d7 1px solid;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	clear: both;
+	color: black;
+	content: "";
+	display: block;
+	font-size: 12;
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0;
+	min-height:0px;
+	outline-color: invert;
+	outline-style: none;
+	outline-width: 0px;
+	padding-bottom: 0px;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	padding-top: 0.4em;
+	text-align: left;
+	text-decoration: none;
+}
+textarea {
+	width: 95%;
+	background: url(base/images/ui-bg_flat_75_ffffff_40x100.png) #ffffff repeat-x 50% 50%;
+	border: #4297d7 1px solid;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	clear: both;
+	color: black;
+	content: "";
+	display: block;
+	font-size: 12;
+	line-height: 1.3;
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0;
+	min-height:0px;
+	outline-color: invert;
+	outline-style: none;
+	outline-width: 0px;
+	padding-bottom: 0px;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	padding-top: 0.4em;
+	text-align: left;
+	text-decoration: none;
+}
+select {
+	width: 95%;
+}
+
+.info-div {
+	width: 100%; margin:0 auto;
+	text-align: center;
+	background: #a6c9e2 ;
+	padding-bottom: 2px;
+}
+.info-table {
+	width: 99%; margin:0 auto;
+	border-collapse: collapse;
+}
+.info-table tr td {
+	width: 30%;
+	border: 1px solid #4297d7;
+	padding: .6em 10px;
+	text-align: left;
+}
+.info-table tr .td-right {
+	text-align: right;
+	width: 20%;
+}
+
+.info-title {
+	width: 99.5%;
+	height: 30px;
+	background: url(base/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) #5c9ccc repeat-x 50% 50%;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	clear: both;
+	color: #ffffff;
+	content: "";
+	display: table;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	line-height: 1.3;
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0;
+	min-height:0px;
+	outline-color: invert;
+	outline-style: none;
+	outline-width: 0px;
+	padding-bottom: 0px;
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+	text-align: left;
+	text-decoration: none;
+}
+.navigationTitle {
+	width: 97%;
+	height: 30px;
+	background: url(base/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) #5c9ccc repeat-x 50% 50%;
+	border: #4297d7 1px solid;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	clear: both;
+	color: #ffffff;
+	content: "";
+	display: table;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	line-height: 1.3;
+	list-style-image: none;
+	list-style-type: none;
+	margin: 0;
+	min-height:0px;
+	outline-color: invert;
+	outline-style: none;
+	outline-width: 0px;
+	padding-bottom: 0px;
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+	text-align: left;
+	text-decoration: none;
+}
+.info-title span {
+	vertical-align: middle;
+	height: 30px;
+	margin: 0;
+	width:1px;
+	display:inline-block;
+}
+.info-title label {
+	vertical-align: middle;
+	font-size: 11;
+}
+.buttons-div {
+	text-align:center; margin-top: 20px;
+}
+.toolbar {
+	width:98.6%;
+	height: 35px;
+	background: url(base/images/ui-bg_glass_75_d0e5f5_1x400.png) #5c9ccc repeat-x 0% 0%;
+	padding-top: 5px;
+	padding-left: 5px;
+	text-align: left;
+	margin-left: 4px;
+	margin-bottom: 2px;
+	margin: 0 auto;
+}
+
+.textarea-memo {
+	width: 98%;
+	height: 100px;
+}

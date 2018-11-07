@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="customerReceiver" namespace="/workflow/customerReceiver" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.workflow.flows.customer.action.CustomerReceiverAction" method="queryPage"></action>
+		<action name="queryByCustomerId" class="com.linuslan.oa.workflow.flows.customer.action.CustomerReceiverAction" method="queryByCustomerId"></action>
+		<action name="queryById" class="com.linuslan.oa.workflow.flows.customer.action.CustomerReceiverAction" method="queryById">
+			<result name="add">/com/linuslan/oa/workflow/customer/AddReceiver.jsp</result>
+			<result name="edit">/com/linuslan/oa/workflow/customer/EditReceiver.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.workflow.flows.customer.action.CustomerReceiverAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.workflow.flows.customer.action.CustomerReceiverAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.workflow.flows.customer.action.CustomerReceiverAction" method="del"></action>
+		<action name="authorize" class="com.linuslan.oa.workflow.flows.customer.action.CustomerReceiverAction" method="authorize"></action>
+	</package>
+</struts>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="certificate" namespace="/sys/certificate" extends="struts-default">
+		<action name="queryPage" class="com.linuslan.oa.system.certificate.action.CertificateAction" method="queryPage"></action>
+		<action name="queryAll" class="com.linuslan.oa.system.certificate.action.CertificateAction" method="queryAll"></action>
+		<action name="queryById" class="com.linuslan.oa.system.certificate.action.CertificateAction" method="queryById">
+			<result name="add">/com/linuslan/oa/system/certificate/Add.jsp</result>
+			<result name="edit">/com/linuslan/oa/system/certificate/Edit.jsp</result>
+			<result name="view">/com/linuslan/oa/system/certificate/View.jsp</result>
+		</action>
+		<action name="update" class="com.linuslan.oa.system.certificate.action.CertificateAction" method="update"></action>
+		<action name="add" class="com.linuslan.oa.system.certificate.action.CertificateAction" method="add"></action>
+		<action name="del" class="com.linuslan.oa.system.certificate.action.CertificateAction" method="del"></action>
+	</package>
+</struts>
