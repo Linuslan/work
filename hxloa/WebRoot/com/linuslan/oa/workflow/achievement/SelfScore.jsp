@@ -119,12 +119,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 colModel: [{
                 	label: "ID", name: "id", hidden: true
                 }, {
-                	label: "考核项目", name: "title", width: 100, align: "left",
+                	label: "考核项目", name: "title", width: 150, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return decode(rowObject.title);
                 	}
                 }, {
-                	label: "具体指标", name: "content", width: 200, align: "left",
+                	label: "具体指标", name: "content", width: 350, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return decode(rowObject.content);
                 	}
@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		return decode(rowObject.source);
                 	}
                 }, {
-                	label: "标准", name: "formula", width: 150, align: "left",
+                	label: "标准", name: "formula", width: 200, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return decode(rowObject.formula);
                 	}
@@ -144,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		return decode(rowObject.scoreWeight);
                 	}
                 }, {
-                	label: "完成情况", name: "performance", width: 150, align: "left", editable: true, edittype: "custom",
+                	label: "完成情况", name: "performance", width: 350, align: "left", editable: true, edittype: "custom",
                 	editoptions: {
                 		rows: "10",
                 		width: "100%",

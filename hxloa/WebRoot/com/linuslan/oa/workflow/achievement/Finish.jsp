@@ -223,16 +223,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	return true;
                 },
                 subGridRowExpanded: function(subgrid_id, rowid) {
+                	//console.log(rowid);
                 	var rowData = $("#achievementContentDatagrid_edit").getRowData(rowid);
+                	//console.log(rowData);
                 	var id = rowData.id;
-                	if(id) {
+                	if(rowid) {
                 		var tableId = subgrid_id+"_table";
                 		var html = "<div style='padding: 10px;'>";
                 		html = html + "<table id='"+tableId+"' class='scroll'></table>";
                 		html = html + "</div>";
                 		var subgrid = $("#"+subgrid_id).html(html);
                 		$("#"+tableId).jqGrid({
-                			url: getRoot() + "workflow/achievement/queryContentOpinionsByContentId.action?achievementContent.id="+id,
+                			url: getRoot() + "workflow/achievement/queryContentOpinionsByContentId.action?achievementContent.id="+rowid,
                 			datatype: "json",
                 			height: "100%",
                 			shrinkToFit: true,

@@ -172,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			$("#achievementContentDatagrid_leaderScore").jqGrid({
    				url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
                 mtype: "POST",
-                shrinkToFit: false,
+                shrinkToFit: true,
                 //autowidth: true,
                 //scrollrows: false,
                 //scroll: false,
@@ -180,18 +180,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 datatype: "json",
                 gridComplete: function() {
                 	$("#achievementContentDatagrid_leaderScore").setGridWidth($("#achievement").width()*0.99);
-                	$("#achievementContentDatagrid_leaderScore").closest(".ui-jqgrid-bdiv").css({"overflow-x" : "auto"});
+                	//$("#achievementContentDatagrid_leaderScore").closest(".ui-jqgrid-bdiv").css({"overflow-x" : "auto"});
                 },
                 //data: [{"id": 1, "remittanceDate": "2016-04-05", "achievementClassName": "d", "achievementClassId": 4, "content": "测试", "money": "5000", "remark": "cs"}],
                 colModel: [{
                 	label: "ID", name: "id", hidden: true
                 }, {
-                	label: "考核项目", name: "title", width: 100, align: "left",
+                	label: "考核项目", name: "title", width: 150, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return decode(rowObject.title);
                 	}
                 }, {
-                	label: "具体指标", name: "content", width: 200, align: "left",
+                	label: "具体指标", name: "content", width: 350, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return decode(rowObject.content);
                 	}
@@ -201,14 +201,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		return decode(rowObject.source);
                 	}
                 }, {
-                	label: "标准", name: "formula", width: 150, align: "left",
+                	label: "标准", name: "formula", width: 200, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return decode(rowObject.formula);
                 	}
                 }, {
                 	label: "权重", name: "scoreWeight", width: 50, align: "center"
                 }, {
-                	label: "完成情况", name: "performance", width: 150, align: "left",
+                	label: "完成情况", name: "performance", width: 350, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return decode(rowObject.performance);
                 	}
@@ -223,6 +223,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		} else {
                 			return rowObject.leaderScore;
                 		}
+                	}
+                }, {
+                	label: "审核意见", name: "", width: 150, align: "left",
+                	formatter: function(cellvalue, options, rowObject) {
+                		return "<p>陈玲：同意</p><p>陈国栋：同意</p>";
                 	}
                 }],
 				viewrecords: true,

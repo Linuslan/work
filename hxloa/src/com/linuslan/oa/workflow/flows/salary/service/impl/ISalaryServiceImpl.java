@@ -557,6 +557,9 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				map = iter.next();
 				content = this.parseToSalaryContent(map);
 				Long departmentId = CodeUtil.parseLong(map.get("DEPARTMENT_ID"));
+				if(null == departmentId) {
+					departmentId = CodeUtil.parseLong(map.get("DEPT_ID"));
+				}
 				if(null == departmentSalaryMap.get(departmentId)) {
 					//departmentSalaryMap.put(departmentId, new ArrayList<Map<String, Object>> ());
 					departmentSalaryMap.put(departmentId, new ArrayList<SalaryContent> ());
