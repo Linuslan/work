@@ -225,7 +225,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		}
                 	}
                 }, {
-                	label: "审核意见", name: "", width: 150, align: "left",
+                	label: "陈玲审核", name: "", width: 150, align: "left",
+                	formatter: function(cellvalue, options, rowObject) {
+                		return "<p>陈玲：同意</p><p>陈国栋：同意</p>";
+                	}
+                }, {
+                	label: "陈国栋审核", name: "", width: 150, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return "<p>陈玲：同意</p><p>陈国栋：同意</p>";
                 	}
