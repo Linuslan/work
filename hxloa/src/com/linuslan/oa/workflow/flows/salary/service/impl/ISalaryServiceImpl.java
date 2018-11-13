@@ -556,6 +556,8 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 			while(iter.hasNext()) {
 				map = iter.next();
 				content = this.parseToSalaryContent(map);
+				content.setYear(year);
+				content.setMonth(month);
 				Long departmentId = CodeUtil.parseLong(map.get("DEPARTMENT_ID"));
 				if(null == departmentId) {
 					departmentId = CodeUtil.parseLong(map.get("DEPT_ID"));

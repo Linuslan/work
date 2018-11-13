@@ -21,7 +21,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<style>
+		.ui-jqgrid table>tbody>tr>td.vertial_top,
+		.ui-jqgrid table>tbody>tr>th.vertial_top,
+		.ui-jqgrid table>tfoot>tr>td.vertial_top,
+		.ui-jqgrid table>tfoot>tr>th.vertial_top,
+		.ui-jqgrid table>thead>tr>td.vertial_top,
+		.ui-jqgrid table>thead>tr>th.vertial_top {
+			vertical-align: top;
+		}
+	</style>
   </head>
   
   <body>
@@ -225,14 +234,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		}
                 	}
                 }, {
-                	label: "陈玲审核", name: "", width: 150, align: "left",
+                	label: "陈玲评分", name: "", width: 150, align: "left", classes: "vertial_top",
                 	formatter: function(cellvalue, options, rowObject) {
-                		return "<p>陈玲：同意</p><p>陈国栋：同意</p>";
+                		return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>50</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>abc</div></div>";
                 	}
                 }, {
-                	label: "陈国栋审核", name: "", width: 150, align: "left",
+                	label: "陈国栋评分", name: "", width: 150, align: "left", classes: "vertial_top",
                 	formatter: function(cellvalue, options, rowObject) {
-                		return "<p>陈玲：同意</p><p>陈国栋：同意</p>";
+                		return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>50</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>abc</div></div>";
                 	}
                 }],
 				viewrecords: true,
