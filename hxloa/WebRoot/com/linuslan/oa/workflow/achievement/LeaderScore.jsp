@@ -178,6 +178,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		
    		function generateAuditAchievementContenGrid() {
    			var id = $("#leaderScoreAchievementForm").find("input.achievementId").val();
+   			$.ajax({
+   				url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
+   				method: "POST",
+   				success: function(data) {
+   					var json = eval("("+data+")");
+   					console.log(json);
+   				}
+   			});
    			$("#achievementContentDatagrid_leaderScore").jqGrid({
    				url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
                 mtype: "POST",
