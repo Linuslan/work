@@ -443,6 +443,16 @@ public class IAchievementDaoImpl extends IBaseDaoImpl implements
 		return contents;
 	}
 	
+	public List<AchievementContentScore> queryScoreOpinionByContentIds(List<Long> ids) {
+		List<AchievementContentScore> contents = new ArrayList<AchievementContentScore> ();
+		Session session = this.sessionFactory.getCurrentSession();
+		String hql = "FROM AchievementContent rc WHERE rc.id IN (:ids) AND rc.isDelete=0";
+		Query query = session.createQuery(hql);
+		query.setParameterList("ids", ids);
+		contents.addAll(query.list());
+		return contents;
+	}
+	
 	/**
 	 * 通过绩效项目的id查询绩效的项目的审核意见记录
 	 * @param id
