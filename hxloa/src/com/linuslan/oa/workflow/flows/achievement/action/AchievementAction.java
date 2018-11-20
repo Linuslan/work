@@ -24,6 +24,8 @@ import org.springframework.stereotype.Controller;
 import com.linuslan.oa.common.BaseAction;
 import com.linuslan.oa.system.company.model.Company;
 import com.linuslan.oa.system.company.service.ICompanyService;
+import com.linuslan.oa.system.group.model.Group;
+import com.linuslan.oa.system.group.service.IGroupService;
 import com.linuslan.oa.system.user.model.User;
 import com.linuslan.oa.system.user.service.IUserService;
 import com.linuslan.oa.util.BeanUtil;
@@ -51,6 +53,8 @@ public class AchievementAction extends BaseAction {
 	
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private IGroupService groupService;
 	
 	private Achievement achievement;
 	
@@ -214,6 +218,21 @@ public class AchievementAction extends BaseAction {
 	
 	public void queryContentsByAchievementId() {
 		try {
+			Achievement achievement = this.achievementService.queryById(this.achievement.getId());
+			Long userId = achievement.getUserId();
+			User user = this.userService.queryById(userId);
+			Long groupId = user.getGroupId();
+			int leaderCnt = 0;
+			List<Long> groupList = new ArrayList<Long> ();
+			while(groupId != null) {
+				Group group = this.groupService.queryById(groupId);
+				groupId = group.getPid();
+				if(null == groupId) {
+					break;
+				}
+				groupList.add(groupId);
+			}
+			
 			List<AchievementContent> contents = this.achievementService.queryContentsByAchievementId(this.achievement.getId());
 			JsonConfig jsonConfig = new JsonConfig();
 			jsonConfig.registerJsonValueProcessor(Date.class, new DateProcessor());

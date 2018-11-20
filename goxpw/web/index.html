@@ -5,23 +5,43 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" type="text/css" href="resources/bootstrap4/dist/css/bootstrap.min.css">
 	<title></title>
+	<style type="text/css">
+		body {
+			font-size: 12px;
+			font-family: Arial,"Lucida Grande","Microsoft Yahei","Hiragino Sans GB","Hiragino Sans GB W3",SimSun,"PingFang SC",STHeiti;
+			color: #666;
+			padding: 0px;
+			margin: 0px;
+		}
+		.navbar-nav .active a {
+			background-color: #ff9d00;
+			color: #fff!important;
+		}
+		li.nav-item a {
+			color:#333;
+			padding: 0 16px;
+			text-align: center;
+		}
+		li.nav-item {
+			min-width: 64px;
+		}
+	</style>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Navbar</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 68px;font-size: 16px;">
+		<div id="navbarSupportedContent" style="width:1000px; height: 68px;margin: 0 auto;align-items: center;display: flex!important">
+			<ul class="navbar-nav mr-auto" style="line-height: 68px;padding: 0 10px 0 25px;">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="#">首页<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
+					<a class="nav-link" href="#">目的地</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">旅游攻略</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">旅行商城</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">Action</a>
 						<a class="dropdown-item" href="#">Another action</a>
@@ -30,25 +50,38 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link disabled" href="#">Disabled</a>
+					<a class="nav-link" href="#">酒店</a>
 				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">社区</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">APP</a>
+				</li>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			    </form>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
 		</div>
+		<div style="height: 2px; background-color: rgb(0,0,0.06); width: 100%;position: absolute;left: 0;right: 0;bottom: -2px;border-top: 1px solid #d6d6d6;"></div>
 	</nav>
 	<div class="content container-fluid">
 		<div class="row">
 			<div class="col-sm">
-				One of three columns
+				
 			</div>
 			<div class="col-sm">
-				One of three columns
+				
 			</div>
 			<div class="col-sm">
-				One of three columns
+				
 			</div>
 		</div>
 	</div>
