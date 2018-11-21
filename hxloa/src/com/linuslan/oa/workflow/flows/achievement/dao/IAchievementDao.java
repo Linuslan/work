@@ -91,6 +91,13 @@ public interface IAchievementDao extends IBaseDao {
 	public List<AchievementContent> queryContentsByAchievementId(Long id);
 	
 	/**
+	 * 通过绩效id查询绩效的评分日志
+	 * @param id
+	 * @return
+	 */
+	public List<AchievementContentScore> queryScoreOpinionByAchievementId(Long id);
+	
+	/**
 	 * 通过绩效项目的id查询绩效的项目的审核意见记录
 	 * @param id
 	 * @return

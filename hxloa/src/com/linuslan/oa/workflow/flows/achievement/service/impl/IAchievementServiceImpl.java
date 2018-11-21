@@ -139,6 +139,14 @@ public class IAchievementServiceImpl extends IBaseServiceImpl implements
 	public List<AchievementContent> queryContentsByAchievementId(Long id) {
 		return this.achievementDao.queryContentsByAchievementId(id);
 	}
+	/**
+	 * 通过绩效id查询绩效的评分日志
+	 * @param id
+	 * @return
+	 */
+	public List<AchievementContentScore> queryScoreOpinionByAchievementId(Long id) {
+		return this.achievementDao.queryScoreOpinionByAchievementId(id);
+	}
 	
 	/**
 	 * 通过绩效项目的id查询绩效的项目的审核意见记录

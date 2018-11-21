@@ -37,6 +37,7 @@ import com.linuslan.oa.util.Page;
 import com.linuslan.oa.workflow.flows.achievement.model.Achievement;
 import com.linuslan.oa.workflow.flows.achievement.model.AchievementContent;
 import com.linuslan.oa.workflow.flows.achievement.model.AchievementContentOpinion;
+import com.linuslan.oa.workflow.flows.achievement.model.AchievementContentScore;
 import com.linuslan.oa.workflow.flows.achievement.model.YearAchievement;
 import com.linuslan.oa.workflow.flows.achievement.service.IAchievementService;
 
@@ -232,8 +233,9 @@ public class AchievementAction extends BaseAction {
 				}
 				groupList.add(groupId);
 			}
-			
 			List<AchievementContent> contents = this.achievementService.queryContentsByAchievementId(this.achievement.getId());
+			List<AchievementContentScore> contentScores = this.achievementService.queryScoreOpinionByAchievementId(this.achievement.getId());
+			
 			JsonConfig jsonConfig = new JsonConfig();
 			jsonConfig.registerJsonValueProcessor(Date.class, new DateProcessor());
 			JSONArray json = JSONArray.fromObject(contents, jsonConfig);

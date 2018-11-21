@@ -10,6 +10,7 @@ import com.linuslan.oa.util.Page;
 import com.linuslan.oa.workflow.flows.achievement.model.Achievement;
 import com.linuslan.oa.workflow.flows.achievement.model.AchievementContent;
 import com.linuslan.oa.workflow.flows.achievement.model.AchievementContentOpinion;
+import com.linuslan.oa.workflow.flows.achievement.model.AchievementContentScore;
 import com.linuslan.oa.workflow.flows.achievement.model.YearAchievement;
 
 public interface IAchievementService extends IBaseService {
@@ -83,6 +84,13 @@ public interface IAchievementService extends IBaseService {
 	 * @return
 	 */
 	public List<AchievementContent> queryContentsByAchievementId(Long id);
+	
+	/**
+	 * 通过绩效id查询绩效的评分日志
+	 * @param id
+	 * @return
+	 */
+	public List<AchievementContentScore> queryScoreOpinionByAchievementId(Long id);
 	
 	/**
 	 * 通过绩效项目的id查询绩效的项目的审核意见记录
