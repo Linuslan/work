@@ -511,6 +511,7 @@ public class IAchievementServiceImpl extends IBaseServiceImpl implements
 			score.setIsDelete(0);
 			score.setScore(content.getLeaderScore());
 			score.setUserId(HttpUtil.getLoginUser().getId());
+			score.setOpinion(content.getLeaderScoreOpinion());
 			scores.add(score);
 		}
 		return scores;
