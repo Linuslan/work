@@ -12,8 +12,10 @@ import com.linuslan.oa.common.IBaseServiceImpl;
 import com.linuslan.oa.system.button.dao.IButtonDao;
 import com.linuslan.oa.system.button.model.Button;
 import com.linuslan.oa.system.button.service.IButtonService;
+import com.linuslan.oa.system.menu.model.Menu;
 import com.linuslan.oa.util.BeanUtil;
 import com.linuslan.oa.util.Page;
+import com.linuslan.oa.util.TreeUtil;
 
 @Component("buttonService")
 @Transactional
@@ -118,4 +120,9 @@ public class IButtonServiceImpl extends IBaseServiceImpl implements IButtonServi
 	public List<Button> queryByIds(List<Long> ids) {
 		return this.buttonDao.queryByIds(ids);
 	}
+
+	public List<Button> queryByUserId(Long userId) {
+		return this.buttonDao.queryByUserId(userId);
+	}
+	
 }

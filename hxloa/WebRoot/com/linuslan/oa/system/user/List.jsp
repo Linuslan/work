@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/c" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -145,7 +146,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		var userSalaryDatagrid;
    		var userCapitalDatagrid;
    		var userContractDatagrid;
+   		var loginUserId;
+   		var xtgl_rygl_xzry;
+   		var xtgl_rygl_bj;
+   		var xtgl_rygl_sc;
+   		var xtgl_rygl_fpgs;
+   		
    		$(function() {
+   			init();
    			initSelect_user();
    			$("#search_form_user_list").find(".departmentTree").combotree({
 				url: getRoot() + "sys/department/queryTree.action",
@@ -215,15 +223,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }, {
                 	label: "操作", formatter: function(cellvalue, options, rowObject) {
                 		var buttons = createBtn("查看", "btn-info btn-xs", "fa-file-o", "viewUser("+rowObject.id+")");
+                		if(loginUserId == 1 || xtgl_rygl_bj == 1) {
                 		buttons = buttons + createBtn("修改", "btn-success btn-xs", "fa-pencil", "editUser("+rowObject.id+")");
+                		}
                 		if(rowObject.isLeave == 1) {
                 			buttons = buttons + createBtn("离职", "btn-danger btn-xs", "fa-user-times", "fireUser("+rowObject.id+")");
                 		} else {
                 			buttons = buttons + createBtn("复职", "btn-warning btn-xs", "fa-history", "resumeUser("+rowObject.id+")");
                 		}
+                		if(loginUserId == 1 || xtgl_rygl_fpgs == 1) {
                 		buttons = buttons + createBtn("分配公司", "btn-info btn-xs", "fa-clone", "assignCompany("+rowObject.id+")");
-   						buttons = buttons + createBtn("删除", "btn-danger btn-xs", "fa-trash-o", "delUser("+rowObject.id+")");
-   						return buttons;
+                		}
+                		if(loginUserId == 1 || xtgl_rygl_sc == 1) {
+                		buttons = buttons + createBtn("删除", "btn-danger btn-xs", "fa-trash-o", "delUser("+rowObject.id+")");
+                		}
+                		return buttons;
                 	}
                 }],
                 onSelectRow: function(id){
@@ -1250,6 +1264,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    	}
 			    }]
 	        });
+   		}
+   		
+   		function init() {
+   			loginUserId=${sessionScope.loginUser.id};
+   			if (loginUserId != 1) {
+	   			<c:forEach items="${sessionScope.authorize_button}" var="button"  varStatus="idx">
+		   			<c:if test="${button.value eq 'xtgl_rygl_xzry'}">
+		   				xtgl_rygl_xzry = 1;
+		   			</c:if>
+		   			<c:if test="${button.value eq 'xtgl_rygl_bj'}">
+		   				xtgl_rygl_bj = 1;
+	   				</c:if>
+		   			<c:if test="${button.value eq 'xtgl_rygl_sc'}">
+		   				xtgl_rygl_sc = 1;
+	   				</c:if>
+		   			<c:if test="${button.value eq 'xtgl_rygl_fpgs'}">
+		   				xtgl_rygl_fpgs = 1;
+	   				</c:if>
+	   			</c:forEach>
+   			}
+   			if(loginUserId != 1 && xtgl_rygl_xzry != 1) {
+   				$("#addUser").hide();
+   			}
    		}
    		
    		function initSelect_user() {

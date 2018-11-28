@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.linuslan.oa.common.IBaseDao;
 import com.linuslan.oa.system.button.model.Button;
+import com.linuslan.oa.system.menu.model.Menu;
 import com.linuslan.oa.util.Page;
 
 public interface IButtonDao extends IBaseDao {
@@ -69,5 +70,12 @@ public interface IButtonDao extends IBaseDao {
 	 * @return
 	 */
 	public List<Button> queryByIds(List<Long> ids);
+	
+	/**
+	 * 通过用户id查询其拥有的菜单权限
+	 * @param userId
+	 * @return
+	 */
+	public List<Button> queryByUserId(Long userId);
 	
 }

@@ -86,20 +86,23 @@ public class MenuAction extends BaseAction {
 		try {
 			User user = HttpUtil.getLoginUser();
 			List<Menu> menuList = null;
+			List<Button> buttonList = null;
 			if(1l == user.getId()) {
 				menuList = this.menuService.queryIndex();
 			} else {
 				menuList = this.menuService.queryByUserId(user.getId());
+				buttonList = this.buttonService.queryByUserId(user.getId());
 			}
 			request.setAttribute("menuList", menuList);
 			HttpSession session = request.getSession();
 			session.setAttribute(ConstantVar.AUTHORIZE_MENU, menuList);
-			String menuIdStr = BeanUtil.parseString(menuList, "id", ",");
-			List<Long> menuIds = BeanUtil.parseStringToLongList(menuIdStr, ",");
-			if(null != menuIds && 0 < menuIds.size()) {
-				List<Button> buttons = this.buttonService.queryByMenuIds(menuIds);
-				session.setAttribute(ConstantVar.AUTHORIZE_BUTTON, buttons);
-			}
+//			String menuIdStr = BeanUtil.parseString(menuList, "id", ",");
+//			List<Long> menuIds = BeanUtil.parseStringToLongList(menuIdStr, ",");
+//			if(null != menuIds && 0 < menuIds.size()) {
+//				List<Button> buttons = this.buttonService.queryByMenuIds(menuIds);
+//				session.setAttribute(ConstantVar.AUTHORIZE_BUTTON, buttons);
+//			}
+			session.setAttribute(ConstantVar.AUTHORIZE_BUTTON, buttonList);
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}

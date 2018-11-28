@@ -14,7 +14,9 @@ import org.springframework.stereotype.Component;
 import com.linuslan.oa.common.IBaseDaoImpl;
 import com.linuslan.oa.system.button.dao.IButtonDao;
 import com.linuslan.oa.system.button.model.Button;
+import com.linuslan.oa.system.menu.model.Menu;
 import com.linuslan.oa.util.Page;
+import com.linuslan.oa.util.hibernate.BeanTransformerAdapter;
 
 @Component("buttonDao")
 public class IButtonDaoImpl extends IBaseDaoImpl implements IButtonDao {
@@ -177,4 +179,17 @@ public class IButtonDaoImpl extends IBaseDaoImpl implements IButtonDao {
 		buttons.addAll(query.list());
 		return buttons;
 	}
+
+	@Override
+	public List<Button> queryByUserId(Long userId) {
+		List<Button> list = new ArrayList<Button> ();
+		Session session = this.sessionFactory.getCurrentSession();
+		String hql = "SELECT b.id, b.name, b.value FROM sys_button b WHERE b.id IN (SELECT srr.resources_id FROM sys_role_resources srr WHERE srr.resources_type='button' AND srr.role_id IN (SELECT sru.role_id FROM sys_role_user sru, sys_role sr WHERE sru.user_id=:userId AND sru.role_id=sr.id AND sr.is_delete=0)) AND b.is_delete=0";
+		Query query = session.createSQLQuery(hql);
+		query.setParameter("userId", userId);
+		query.setResultTransformer(new BeanTransformerAdapter(Button.class));
+		list.addAll(query.list());
+		return list;
+	}
+
 }

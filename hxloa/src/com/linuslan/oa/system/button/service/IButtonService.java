@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.linuslan.oa.common.IBaseService;
 import com.linuslan.oa.system.button.model.Button;
+import com.linuslan.oa.system.menu.model.Menu;
 import com.linuslan.oa.util.Page;
 
 public interface IButtonService extends IBaseService {
@@ -77,4 +78,12 @@ public interface IButtonService extends IBaseService {
 	 * @return
 	 */
 	public List<Button> queryByIds(List<Long> ids);
+	
+	/**
+	 * 通过用户id查询其拥有的菜单按钮
+	 * @param userId
+	 * @return
+	 */
+	public List<Button> queryByUserId(Long userId);
+	
 }
