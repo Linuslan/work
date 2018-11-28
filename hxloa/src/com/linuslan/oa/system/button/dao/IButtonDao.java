@@ -50,6 +50,13 @@ public interface IButtonDao extends IBaseDao {
 	public List<Button> queryByMenuIds(List<Long> menuIds);
 	
 	/**
+	 * 通过用户id查询其拥有的按钮
+	 * @param userId
+	 * @return
+	 */
+	public List<Button> queryByUserId(Long userId);
+	
+	/**
 	 * 通过按钮id集合，删除角色资源里面的按钮资源
 	 * @param ids
 	 * @return

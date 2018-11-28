@@ -22,12 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<style>
-		.ui-jqgrid table>tbody>tr>td.vertial_top,
-		.ui-jqgrid table>tbody>tr>th.vertial_top,
-		.ui-jqgrid table>tfoot>tr>td.vertial_top,
-		.ui-jqgrid table>tfoot>tr>th.vertial_top,
-		.ui-jqgrid table>thead>tr>td.vertial_top,
-		.ui-jqgrid table>thead>tr>th.vertial_top {
+		.ui-jqgrid table>tbody>tr>td.vertical_top,
+		.ui-jqgrid table>tbody>tr>th.vertical_top,
+		.ui-jqgrid table>tfoot>tr>td.vertical_top,
+		.ui-jqgrid table>tfoot>tr>th.vertical_top,
+		.ui-jqgrid table>thead>tr>td.vertical_top,
+		.ui-jqgrid table>thead>tr>th.vertical_top {
 			vertical-align: top;
 		}
 	</style>
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								${achievement.userScore }
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="text" class="col-md-2 col-sm-4 control-label">当前得分：</label>
 							<div class="col-md-3 col-sm-8 left-label leaderTotalScore">
 								${(achievement.leaderScore + achievement.addScore) == 0 ? achievement.userScore : (achievement.leaderScore + achievement.addScore)}
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="col-md-3 col-sm-8 left-label">
 								
 							</div>
-						</div>
+						</div> -->
 			    	</div>
 			    	<div class="box-body">
 			    		<table id="achievementContentDatagrid_leaderScore"></table>
@@ -241,17 +241,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    					var gridData = json.contents;
    					for(var i = 0; i < leaders.length; i ++) {
    						var leader = leaders[i];
-   						columns.push({label: leader.text+"评分", name: "contentScore"+(i+1), width: 150, align: "left", classes: "vertial_top",
+   						columns.push({label: leader.text+"评分", name: "contentScore"+(i+1), width: 150, align: "left", classes: "vertical_top",
    	   		            	formatter: function(cellvalue, options, rowObject) {
-   	   		            		console.log(cellvalue);
-   	   		            		console.log(rowObject);
    	   		            		var opinion = "暂未填写";
    	   		            		var score = "未评分";
    	   		            		if(cellvalue) {
    	   		            			opinion = cellvalue.opinion;
    	   		            			score = cellvalue.score;
    	   		            		}
-   	   		            		return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>"+score+"</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>"+opinion+"</div></div>";
+   	   		            		//return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>"+score+"</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>"+opinion+"</div></div>";
+   	   		            		return "<div style='line-height:30px;'>分数："+score+"</div><div style='line-height:30px;'>意见："+opinion+"</div>";
    	   		            	}
    						});
    					}

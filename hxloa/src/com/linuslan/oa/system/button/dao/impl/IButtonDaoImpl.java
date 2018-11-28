@@ -15,6 +15,7 @@ import com.linuslan.oa.common.IBaseDaoImpl;
 import com.linuslan.oa.system.button.dao.IButtonDao;
 import com.linuslan.oa.system.button.model.Button;
 import com.linuslan.oa.util.Page;
+import com.linuslan.oa.util.hibernate.BeanTransformerAdapter;
 
 @Component("buttonDao")
 public class IButtonDaoImpl extends IBaseDaoImpl implements IButtonDao {
@@ -129,6 +130,22 @@ public class IButtonDaoImpl extends IBaseDaoImpl implements IButtonDao {
 		String hql = "FROM Button b WHERE b.menuId IN (:menuIds) AND b.isDelete=0 ORDER BY b.menuId ASC, b.orderNo ASC";
 		Query query = session.createQuery(hql);
 		query.setParameterList("menuIds", menuIds);
+		list.addAll(query.list());
+		return list;
+	}
+	
+	/**
+	 * 通过用户id查询其拥有的按钮
+	 * @param userId
+	 * @return
+	 */
+	public List<Button> queryByUserId(Long userId) {
+		List<Button> list = new ArrayList<Button> ();
+		Session session = this.sessionFactory.getCurrentSession();
+		String sql = "SELECT m.id, m.menu_id, '' menu_name, m.name, m.value, m.memo, m.order_num, m.create_date, m.is_delete FROM sys_button m WHERE m.is_delete=0 AND m.id IN (SELECT srr.resources_id FROM sys_role_resources srr WHERE srr.resources_type='button' AND srr.role_id IN (SELECT sru.role_id FROM sys_role_user sru, sys_role sr WHERE sru.user_id=:userId AND sru.role_id=sr.id AND sr.is_delete=0))";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("userId", userId);
+		query.setResultTransformer(new BeanTransformerAdapter(Button.class));
 		list.addAll(query.list());
 		return list;
 	}

@@ -2,6 +2,7 @@ package com.linuslan.oa.system.menu.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -87,19 +88,23 @@ public class MenuAction extends BaseAction {
 			User user = HttpUtil.getLoginUser();
 			List<Menu> menuList = null;
 			if(1l == user.getId()) {
-				menuList = this.menuService.queryIndex();
+				menuList = this.menuService.queryAll();
 			} else {
-				menuList = this.menuService.queryByUserId(user.getId());
+				menuList = this.menuService.queryByUser(user);
 			}
-			request.setAttribute("menuList", menuList);
+			List<Menu> menuTree = (List<Menu>) TreeUtil.buildTree(menuList);
+			request.setAttribute("menuList", menuTree);
 			HttpSession session = request.getSession();
 			session.setAttribute(ConstantVar.AUTHORIZE_MENU, menuList);
-			String menuIdStr = BeanUtil.parseString(menuList, "id", ",");
+			List<Button> buttons = this.buttonService.queryByUserId(user.getId());
+			Map<String, Button> btnMap = (Map<String, Button>) BeanUtil.parseListToMap2(buttons, "value");
+			session.setAttribute(ConstantVar.AUTHORIZE_BUTTON, btnMap);
+			/*String menuIdStr = BeanUtil.parseString(menuList, "id", ",");
 			List<Long> menuIds = BeanUtil.parseStringToLongList(menuIdStr, ",");
 			if(null != menuIds && 0 < menuIds.size()) {
-				List<Button> buttons = this.buttonService.queryByMenuIds(menuIds);
-				session.setAttribute(ConstantVar.AUTHORIZE_BUTTON, buttons);
-			}
+				//List<Button> buttons = this.buttonService.queryByMenuIds(menuIds);
+				
+			}*/
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}

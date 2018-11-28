@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="/c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -24,6 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	<div id="userlist">
+  		<input type="hidden" id="user_list_editable" value='<c:out value="${sessionScope.authorize_button.xtgl_rygl_bj != null?1:0 }"></c:out>'/>
+  		<input type="hidden" id="user_list_deletable" value='<c:out value="${sessionScope.authorize_button.xtgl_rygl_sc != null?1:0 }"></c:out>'/>
+  		<input type="hidden" id="user_list_assign_company" value='<c:out value="${sessionScope.authorize_button.xtgl_rygl_fpgs != null?1:0 }"></c:out>'/>
    		<div class="col-xs-12 no-padding">
    			<div class="box box-solid">
    				<div class="box-body">
@@ -96,7 +100,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   					</div>
 					   				</form>
 			   						<div class="toolbar with-border">
-					   					<button class="btn btn-success btn-sm" data-toggle="tooltip" title="新增人员" id="addUser"><i class="fa fa-fw fa-user-plus"></i>新增</button>
+			   							<c:if test="${sessionScope.authorize_button.xtgl_rygl_xzry != null }">
+			   								<button class="btn btn-success btn-sm" data-toggle="tooltip" title="新增人员" id="addUser"><i class="fa fa-fw fa-user-plus"></i>新增</button>
+			   							</c:if>
 					   				</div>
 					   				<div class="box-body">
 					   					<table id="userdatagrid"></table>
@@ -170,6 +176,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	   				hackHeight("#userSalaryDatagrid");
    				}
    			});
+   			var editable = $("#user_list_editable").val();
+   			var deletable = $("#user_list_deletable").val();
+   			var assignCompany = $("#user_list_assign_company").val();
    			userDataGrid = $("#userdatagrid").jqGrid({
                 url: getRoot() + "sys/user/queryPage.action",
                 mtype: "POST",
@@ -215,14 +224,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }, {
                 	label: "操作", formatter: function(cellvalue, options, rowObject) {
                 		var buttons = createBtn("查看", "btn-info btn-xs", "fa-file-o", "viewUser("+rowObject.id+")");
-                		buttons = buttons + createBtn("修改", "btn-success btn-xs", "fa-pencil", "editUser("+rowObject.id+")");
+                		if(editable != 0) {
+                			buttons = buttons + createBtn("修改", "btn-success btn-xs", "fa-pencil", "editUser("+rowObject.id+")");
+                		}
                 		if(rowObject.isLeave == 1) {
                 			buttons = buttons + createBtn("离职", "btn-danger btn-xs", "fa-user-times", "fireUser("+rowObject.id+")");
                 		} else {
                 			buttons = buttons + createBtn("复职", "btn-warning btn-xs", "fa-history", "resumeUser("+rowObject.id+")");
                 		}
-                		buttons = buttons + createBtn("分配公司", "btn-info btn-xs", "fa-clone", "assignCompany("+rowObject.id+")");
-   						buttons = buttons + createBtn("删除", "btn-danger btn-xs", "fa-trash-o", "delUser("+rowObject.id+")");
+                		if(assignCompany != 0) {
+                			buttons = buttons + createBtn("分配公司", "btn-info btn-xs", "fa-clone", "assignCompany("+rowObject.id+")");
+                		}
+                		if(deletable != 0) {
+                			buttons = buttons + createBtn("删除", "btn-danger btn-xs", "fa-trash-o", "delUser("+rowObject.id+")");
+                		}
    						return buttons;
                 	}
                 }],

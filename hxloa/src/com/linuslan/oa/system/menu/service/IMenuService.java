@@ -7,6 +7,7 @@ import com.linuslan.oa.common.IBaseService;
 import com.linuslan.oa.system.menu.model.Menu;
 import com.linuslan.oa.system.menu.vo.MenuView;
 import com.linuslan.oa.system.menu.vo.MenuVo;
+import com.linuslan.oa.system.user.model.User;
 
 public interface IMenuService extends IBaseService {
 	/**
@@ -54,6 +55,8 @@ public interface IMenuService extends IBaseService {
 	 * @return
 	 */
 	public List<Menu> queryByUserId(Long userId);
+	
+	public List<Menu> queryByUser(User user);
 	
 	/**
 	 * 查询所有的菜单资源和按钮资源，组装成树

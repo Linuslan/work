@@ -31,6 +31,10 @@ function createBtn(text, btnCls, iconCls, eventMethod) {
 	return button;
 }
 
+function createAuthBtn(text, btnCls, iconCls, eventMethod, btnId) {
+	
+}
+
 function getFlowStatus(status) {
 	if(status == "0") {
 		return "未提交";

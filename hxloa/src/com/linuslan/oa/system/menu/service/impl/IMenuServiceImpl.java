@@ -15,6 +15,7 @@ import com.linuslan.oa.system.menu.dao.IMenuDao;
 import com.linuslan.oa.system.menu.model.Menu;
 import com.linuslan.oa.system.menu.service.IMenuService;
 import com.linuslan.oa.system.role.dao.IRoleDao;
+import com.linuslan.oa.system.user.model.User;
 import com.linuslan.oa.util.BeanUtil;
 import com.linuslan.oa.util.CodeUtil;
 import com.linuslan.oa.util.TreeUtil;
@@ -212,6 +213,11 @@ public class IMenuServiceImpl extends IBaseServiceImpl implements IMenuService {
 		List<Menu> list = this.menuDao.queryByUserId(userId);
 		List<Menu> tree = (List<Menu>) TreeUtil.buildTree(list);
 		return tree;
+	}
+	
+	public List<Menu> queryByUser(User user) {
+		List<Menu> list = this.menuDao.queryByUserId(user.getId());
+		return list;
 	}
 	
 	public void valid(Menu menu) throws Exception {

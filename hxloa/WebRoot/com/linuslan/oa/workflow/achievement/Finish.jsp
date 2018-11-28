@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								${achievement.userScore }
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="text" class="col-md-2 col-sm-4 control-label">当前得分：</label>
 							<div class="col-md-3 col-sm-8 left-label leaderTotalScore">
 								${achievement.leaderScore }
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="col-md-3 col-sm-8 left-label">
 								
 							</div>
-						</div>
+						</div> -->
 			    	</div>
 			    	<div class="box-body">
 			    		<table id="achievementContentDatagrid_leaderScore"></table>

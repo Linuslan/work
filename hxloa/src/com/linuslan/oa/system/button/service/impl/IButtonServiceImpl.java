@@ -93,6 +93,15 @@ public class IButtonServiceImpl extends IBaseServiceImpl implements IButtonServi
 	}
 	
 	/**
+	 * 通过用户id查询其拥有的按钮
+	 * @param userId
+	 * @return
+	 */
+	public List<Button> queryByUserId(Long userId) {
+		return this.buttonDao.queryByUserId(userId);
+	}
+	
+	/**
 	 * 通过按钮id集合，删除角色资源里面的按钮资源
 	 * @param ids
 	 * @return
