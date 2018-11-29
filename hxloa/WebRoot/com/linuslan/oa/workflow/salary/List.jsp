@@ -608,6 +608,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    				BootstrapDialog.danger("获取到的项目为空");
    				return false;
    			}
+   			console.log(contents);
    			return contents;
    		}
    	</script>

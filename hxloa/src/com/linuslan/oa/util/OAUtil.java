@@ -157,7 +157,19 @@ public class OAUtil {
 					.add(CodeUtil
 							.initBigDecimal(sc.getTotalSubsidy()))
 					.add(CodeUtil
-							.initBigDecimal(sc.getOther()));
+							.initBigDecimal(sc.getOther()))
+					.subtract(CodeUtil
+							.initBigDecimal(sc.getChildcareExpense()))
+					.subtract(CodeUtil
+							.initBigDecimal(sc.getContinuingEducationFee()))
+					.subtract(CodeUtil
+							.initBigDecimal(sc.getHousingLoan()))
+					.subtract(CodeUtil
+							.initBigDecimal(sc.getHousingRent()))
+					.subtract(CodeUtil
+							.initBigDecimal(sc.getSeriousIllnessExpense()))
+					.subtract(CodeUtil
+							.initBigDecimal(sc.getAlimony()));
 			//如果相减后的数值小于0，则税前工资为0
 			//BigDecimal的compareTo方法，如果salaryBeforeTax大于0则返回1
 			//如果小于0则返回-1，如果等于0则返回0

@@ -367,7 +367,7 @@ private static Logger logger = Logger.getLogger(ISalaryDaoImpl.class);
 		SalaryContent content = null;
 		while(iter.hasNext()) {
 			content = iter.next();
-			if(null != content && null == content.getId()) {
+			if(null != content) {
 				if(null == content.getId()) {
 					//新增的，则餐补是原始餐补，则将原始餐补这个字段设置成原始餐补
 					content.setOriginalMealSubsidy(content.getMealSubsidy());

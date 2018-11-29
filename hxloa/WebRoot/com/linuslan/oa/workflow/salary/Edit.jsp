@@ -26,6 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    	<form id="editSalaryForm" action="" class="form-horizontal">
    		<input id="editSalaryId" class="salaryId" name="salary.id" type="hidden" value="${salary.id }" />
+   		<input id="editSalaryYear" name="year" type="hidden" value="${salary.year }"/>
+   		<input id="editSalaryMonth" name="month" type="hidden" value="${salary.month }"/>
    		<div class="nav-tabs-top-border">
    			<ul class="nav nav-tabs">
    				<li class="active">
@@ -71,10 +73,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			setTimeout("buildSalaryContentDatagrid_edit()", 0);
             setTimeout("buildSalaryAuditLogGrid_edit()", 0);
             $("#addSalaryContent_edit").click(function() {
+            	var year = $("#editSalaryYear").val();
+            	var month = $("#editSalaryMonth").val();
             	if(srcRowId) {
             		var rowId = Math.random();
 	            	$("#salaryContentDatagrid_edit").addRowData(rowId, {
 	            		id: "",
+	            		year: year,
+	            		month: month,
 	            		userId: "",
 	            		supposedDutyDay: "",
 	            		actualDutyDay: "",
@@ -217,6 +223,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 },
                 colModel: [{
                 	label: "id", name: "id", hidden: true
+                }, {
+                	label: "year", name: "year", hidden: true
+                }, {
+                	label: "month", name: "month", hidden: true
                 }, {
                 	label: "originalMealSubsidy", name: "originalMealSubsidy", hidden: true
                 }, {
@@ -415,6 +425,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		name: "other"
                 	}
                 }, {
+                	label: "子女教育费", name: "childcareExpense", width: 100, align: "center", editable: true, edittype: "custom",
+                	editoptions: {
+                		custom_element: createNumberBox,
+                		custom_value: operateNumberValue,
+                		name: "childcareExpense"
+                	}
+                }, {
+                	label: "继续教育费", name: "continuingEducationFee", width: 100, align: "center", editable: true, edittype: "custom",
+                	editoptions: {
+                		custom_element: createNumberBox,
+                		custom_value: operateNumberValue,
+                		name: "continuingEducationFee"
+                	}
+                }, {
+                	label: "大病医疗费", name: "seriousIllnessExpense", width: 100, align: "center", editable: true, edittype: "custom",
+                	editoptions: {
+                		custom_element: createNumberBox,
+                		custom_value: operateNumberValue,
+                		name: "seriousIllnessExpense"
+                	}
+                }, {
+                	label: "住房贷款利息", name: "housingLoan", width: 100, align: "center", editable: true, edittype: "custom",
+                	editoptions: {
+                		custom_element: createNumberBox,
+                		custom_value: operateNumberValue,
+                		name: "housingLoan"
+                	}
+                }, {
+                	label: "住房租金费", name: "housingRent", width: 100, align: "center", editable: true, edittype: "custom",
+                	editoptions: {
+                		custom_element: createNumberBox,
+                		custom_value: operateNumberValue,
+                		name: "housingRent"
+                	}
+                }, {
+                	label: "赡养老人费", name: "alimony", width: 100, align: "center", editable: true, edittype: "custom",
+                	editoptions: {
+                		custom_element: createNumberBox,
+                		custom_value: operateNumberValue,
+                		name: "alimony"
+                	}
+                }, {
                 	label: "税前工资", name: "pretaxSalary", width: 100, align: "center", editable: true, edittype: "custom",
                 	editoptions: {
                 		custom_element: createNumberBox,
@@ -477,8 +529,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 					url: getRoot() + "workflow/salary/calculate.action",
                 					data: parseRowData(rowData),
                 					type: "POST",
+                					async: false,
                 					success: function(data) {
                 						var json = eval("("+data+")");
+                						console.log(json);
                 						$("#salaryContentDatagrid_edit").setRowData(rowId, json);
                 						countSalary();
                 					},
@@ -549,6 +603,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    					startColumnName: "socialInsurance", numberOfColumns: 3, titleText: "个人应扣款"
    				}, {
    					startColumnName: "telCharge", numberOfColumns: 5, titleText: "补贴"
+   				}, {
+   					startColumnName: "childcareExpense", numberOfColumns: 6, titleText: "个税扣减专项附加扣除费用"
    				}, {
    					startColumnName: "companySocialInsurance", numberOfColumns: 2, titleText: "公司投保"
    				}]
@@ -724,6 +780,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 * 统计工资
 		 */
 		function countSalary() {
+			var year = $("#editSalaryYear").val();
+        	var month = $("#editSalaryMonth").val();
 			var rowDatas = $("#salaryContentDatagrid_edit").getRowData();
 			var rowIds = $("#salaryContentDatagrid_edit").getDataIDs();
 			var sumHeaderId = undefined;
@@ -813,6 +871,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				srcRowId = rowId;
 	           	$("#salaryContentDatagrid_edit").addRowData(rowId, {
 	           		id: rowId,
+	           		year: year,
+	           		month: month,
 	           		userId: "",
 	           		supposedDutyDay: "",
 	           		actualDutyDay: "",
@@ -839,6 +899,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           		housingSubsidy: "住房补贴",
 	           		totalSubsidy: "总计",
 	           		other: "",
+	           		childcareExpense: "",
+	           		continuingEducationFee: "",
+	           		seriousIllnessExpense: "",
+	           		housingLoan: "",
+	           		housingRent: "",
+	           		alimony: "",
 	           		pretaxSalary: "",
 	           		tax: "",
 	           		actualTotalSalary: "实发合计",
@@ -880,7 +946,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					companySocialInsurance: companySocialInsuranceTotal,
 					companyHealthInsurance: companyHealthInsuranceTotal,
 					operationCell: "",
-					commission: commssionSum,
+					commission: commissionSum,
 					socialInsurance: socialInsuranceSum,
 					healthInsurance: healthInsuranceSum,
 					totalInsurance: insuranceSum,
