@@ -234,7 +234,7 @@ private static Logger logger = Logger.getLogger(ISalaryDaoImpl.class);
 	public List<SalaryContent> queryContentsBySalaryId(Long id) {
 		List<SalaryContent> contents = new ArrayList<SalaryContent> ();
 		if(null != id) {
-			String hql = "FROM SalaryContent rc WHERE rc.salaryId=:salaryId AND rc.isDelete=0";
+			String hql = "FROM SalaryContent rc WHERE rc.salaryId=:salaryId AND rc.isDelete=0 ORDER BY rc.id ASC";
 			Session session = this.sessionFactory.getCurrentSession();
 			Query query = session.createQuery(hql);
 			query.setParameter("salaryId", id);
@@ -251,7 +251,7 @@ private static Logger logger = Logger.getLogger(ISalaryDaoImpl.class);
 	public List<SalaryContent> queryContentsInIds(List<Long> ids) {
 		List<SalaryContent> contents = new ArrayList<SalaryContent> ();
 		Session session = this.sessionFactory.getCurrentSession();
-		String hql = "FROM SalaryContent rc WHERE rc.id IN (:ids)";
+		String hql = "FROM SalaryContent rc WHERE rc.id IN (:ids) ORDER BY rc.id ASC";
 		Query query = session.createQuery(hql);
 		query.setParameterList("ids", ids);
 		contents.addAll(query.list());

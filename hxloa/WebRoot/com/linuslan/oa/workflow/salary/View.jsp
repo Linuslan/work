@@ -126,6 +126,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }, {
                 	label: "id", name: "id", hidden: true
                 }, {
+                	label: "year", name: "year", hidden: true
+                }, {
+                	label: "month", name: "month", hidden: true
+                }, {
                 	label: "应出勤", name: "supposedDutyDay", width: 100, align: "center"
                 }, {
                 	label: "天", name: "actualDutyDay", width: 100, align: "center"
@@ -178,6 +182,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }, {
                 	label: "其他", name: "other", width: 100, align: "center"
                 }, {
+                	label: "子女教育费", name: "childcareExpense", width: 100, align: "center"
+                }, {
+                	label: "继续教育费", name: "continuingEducationFee", width: 100, align: "center"
+                }, {
+                	label: "大病医疗费", name: "seriousIllnessExpense", width: 100, align: "center"
+                }, {
+                	label: "住房贷款利息", name: "housingLoan", width: 100, align: "center"
+                }, {
+                	label: "住房租金费", name: "housingRent", width: 100, align: "center"
+                }, {
+                	label: "赡养老人费", name: "alimony", width: 100, align: "center"
+                }, {
                 	label: "税前工资", name: "pretaxSalary", width: 100, align: "center"
                 }, {
                 	label: "个税", name: "tax", width: 100, align: "center"
@@ -206,6 +222,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    					startColumnName: "socialInsurance", numberOfColumns: 3, titleText: "个人应扣款"
    				}, {
    					startColumnName: "telCharge", numberOfColumns: 5, titleText: "补贴"
+   				}, {
+   					startColumnName: "childcareExpense", numberOfColumns: 6, titleText: "个税扣减专项附加扣除费用"
    				}, {
    					startColumnName: "companySocialInsurance", numberOfColumns: 2, titleText: "公司投保"
    				}]

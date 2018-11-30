@@ -629,6 +629,12 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				sc.setUserId(CodeUtil.parseLong(map.get("USER_ID")));
 				sc.setUserName(CodeUtil.parseString(map.get("USER_NAME")));
 				sc.setPostSalary(CodeUtil.parseBigDecimal(map.get("POST_SALARY")));
+				sc.setChildcareExpense(CodeUtil.parseBigDecimal(map.get("CHILDCARE_EXPENSE")));
+				sc.setContinuingEducationFee(CodeUtil.parseBigDecimal(map.get("CONTINUING_EDUCATION_FEE")));
+				sc.setSeriousIllnessExpense(CodeUtil.parseBigDecimal(map.get("SERIOUS_ILLNESS_EXPENSE")));
+				sc.setHousingLoan(CodeUtil.parseBigDecimal(map.get("HOUSING_LOAN")));
+				sc.setHousingRent(CodeUtil.parseBigDecimal(map.get("HOUSING_RENT")));
+				sc.setAlimony(CodeUtil.parseBigDecimal(map.get("ALIMONY")));
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			}
@@ -834,6 +840,30 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				cell.setCellValue("其他");
 				cell.setCellStyle(cs2);
 				
+				sheet.addMergedRegion(new CellRangeAddress(rowIndex - 2, rowIndex - 2, cellIndex, cellIndex+5));
+				cell = infoRow.createCell(cellIndex);
+				cell.setCellValue("个税扣减专项附加扣除费用");
+				cell.setCellStyle(cs2);
+				
+				subCell1 = infoRow2.createCell(cellIndex ++);
+				subCell1.setCellValue("子女教育费");
+				subCell1.setCellStyle(cs2);
+				subCell2 = infoRow2.createCell(cellIndex ++);
+				subCell2.setCellValue("继续教育费");
+				subCell2.setCellStyle(cs2);
+				subCell3 = infoRow2.createCell(cellIndex ++);
+				subCell3.setCellValue("大病医疗费");
+				subCell3.setCellStyle(cs2);
+				subCell4 = infoRow2.createCell(cellIndex ++);
+				subCell4.setCellValue("住房贷款利息");
+				subCell4.setCellStyle(cs2);
+				Cell subCell5 = infoRow2.createCell(cellIndex++);
+				subCell5.setCellValue("住房租金费");
+				subCell5.setCellStyle(cs2);
+				Cell subCell6 = infoRow2.createCell(cellIndex++);
+				subCell6.setCellValue("赡养老人费");
+				subCell6.setCellStyle(cs2);
+				
 				//其他占两行一列
 				sheet.addMergedRegion(new CellRangeAddress(rowIndex - 2, rowIndex - 1, cellIndex, cellIndex));
 				cell = infoRow.createCell(cellIndex ++);
@@ -1017,6 +1047,30 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 					
 					cell = row.createCell(cellIndex ++);
 					//cell.setCellValue(CodeUtil.parseString(map.get("OTHER")));
+					cell.setCellValue(CodeUtil.parseString(map.getChildcareExpense()));
+					
+					cell = row.createCell(cellIndex ++);
+					//cell.setCellValue(CodeUtil.parseString(map.get("OTHER")));
+					cell.setCellValue(CodeUtil.parseString(map.getContinuingEducationFee()));
+					
+					cell = row.createCell(cellIndex ++);
+					//cell.setCellValue(CodeUtil.parseString(map.get("OTHER")));
+					cell.setCellValue(CodeUtil.parseString(map.getSeriousIllnessExpense()));
+					
+					cell = row.createCell(cellIndex ++);
+					//cell.setCellValue(CodeUtil.parseString(map.get("OTHER")));
+					cell.setCellValue(CodeUtil.parseString(map.getHousingLoan()));
+					
+					cell = row.createCell(cellIndex ++);
+					//cell.setCellValue(CodeUtil.parseString(map.get("OTHER")));
+					cell.setCellValue(CodeUtil.parseString(map.getHousingRent()));
+					
+					cell = row.createCell(cellIndex ++);
+					//cell.setCellValue(CodeUtil.parseString(map.get("OTHER")));
+					cell.setCellValue(CodeUtil.parseString(map.getAlimony()));
+					
+					cell = row.createCell(cellIndex ++);
+					//cell.setCellValue(CodeUtil.parseString(map.get("OTHER")));
 					cell.setCellValue(CodeUtil.parseString(map.getPretaxSalary()));
 					
 					cell = row.createCell(cellIndex ++);
@@ -1075,11 +1129,11 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				cell.setCellValue(CodeUtil.parseString(housingSubsidyTotal));
 				cell.setCellStyle(cs2);
 				
-				cell = sumRow.createCell(29);
+				cell = sumRow.createCell(35);
 				cell.setCellValue(CodeUtil.parseString(companySocialInsuranceTotal));
 				cell.setCellStyle(cs2);
 				
-				cell = sumRow.createCell(30);
+				cell = sumRow.createCell(36);
 				cell.setCellValue(CodeUtil.parseString(companyHealthInsuranceTotal));
 				cell.setCellStyle(cs2);
 				
@@ -1097,8 +1151,8 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				cell.setCellValue(CodeUtil.parseString(benefitTotal));
 				cell.setCellStyle(cs2);
 				
-				sheet.addMergedRegion(new CellRangeAddress(rowIndex - 1, rowIndex - 1, 29, 30));
-				cell = benefitSumRow.createCell(29);
+				sheet.addMergedRegion(new CellRangeAddress(rowIndex - 1, rowIndex - 1, 35, 36));
+				cell = benefitSumRow.createCell(35);
 				cell.setCellValue(CodeUtil.parseString(companyInsuranceTotal));
 				cell.setCellStyle(cs2);
 				
@@ -1108,7 +1162,7 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				cell.setCellValue("工资总计");
 				cell.setCellStyle(cs2);
 				
-				sheet.addMergedRegion(new CellRangeAddress(rowIndex - 1, rowIndex - 1, 17, 30));
+				sheet.addMergedRegion(new CellRangeAddress(rowIndex - 1, rowIndex - 1, 17, 36));
 				cell = totalSalaryRow.createCell(17);
 				cell.setCellValue(CodeUtil.parseString(totalSalary));
 				cell.setCellStyle(cs2);

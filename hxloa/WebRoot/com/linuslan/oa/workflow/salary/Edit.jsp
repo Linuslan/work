@@ -959,18 +959,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           	benefitSumId = rowId;
 	           	$("#salaryContentDatagrid_edit").addRowData(rowId, {
 	           		id: rowId,
-					other: "福利合计",
+					tax: "福利合计",
 					actualTotalSalary: supposedTotal,
 					telCharge: benefitTotal,
 					companySocialInsurance: companyInsuranceTotal
 				});
 			} else {
-				$("#salaryContentDatagrid_edit").setRowData(benefitSumId, {
+				var gridId = "salaryContentDatagrid_edit";
+				$("#"+gridId).find("tr[id='"+benefitSumId+"']").find("td[aria-describedby='"+gridId+"_tax']").html("福利合计");
+				$("#"+gridId).find("tr[id='"+benefitSumId+"']").find("td[aria-describedby='"+gridId+"_telCharge']").html(benefitTotal);
+				$("#"+gridId).find("tr[id='"+benefitSumId+"']").find("td[aria-describedby='"+gridId+"_actualTotalSalary']").html(supposedTotal);
+				$("#"+gridId).find("tr[id='"+benefitSumId+"']").find("td[aria-describedby='"+gridId+"_companySocialInsurance']").html(companyInsuranceTotal);
+				/*$("#salaryContentDatagrid_edit").setRowData(benefitSumId, {
 					other: "福利合计",
 					actualTotalSalary: supposedTotal,
 					telCharge: benefitTotal,
 					companySocialInsurance: companyInsuranceTotal
-				});
+				});*/
 			}
 			mergeCell("salaryContentDatagrid_edit", benefitSumId, "telCharge", "housingSubsidy", 4, benefitTotal);
 			mergeCell("salaryContentDatagrid_edit", benefitSumId, "companySocialInsurance", "companyHealthInsurance", 2, companyInsuranceTotal)
