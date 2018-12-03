@@ -63,6 +63,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-4 col-sm-10 left-label">
 					${userSalary.achievementSalary }
 				</div>
+				<label for="name" class="col-sm-2 control-label">试用期工资：</label>
+				<div class="col-md-4 col-sm-10 left-label">
+					${userSalary.probationSalary }
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">试用期开始时间：</label>
+				<div class="col-md-4 col-sm-10 left-label">
+					<fmt:formatDate value="${userSalary.probationStartTime }" pattern="yyyy-MM-dd"/>
+				</div>
+				<label for="name" class="col-sm-2 control-label">试用期结束时间：</label>
+				<div class="col-md-4 col-sm-10 left-label">
+					<fmt:formatDate value="${userSalary.probationEndTime }" pattern="yyyy-MM-dd"/>
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">生效时间：</label>
@@ -135,13 +149,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="name" class="col-sm-2 control-label">工作餐补贴：</label>
-				<div class="col-md-4 col-sm-10 left-label">
-					${userSalary.mealSubsidy }
-				</div>
 				<label for="name" class="col-sm-2 control-label">住房补贴：</label>
 				<div class="col-md-4 col-sm-10 left-label">
 					${userSalary.housingSubsidy }
+				</div>
+				<label for="name" class="col-sm-2 control-label">住房补贴开始时间：</label>
+				<div class="col-md-4 col-sm-10 left-label">
+					${userSalary.housingSubsidyStartTime }
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">工作餐补贴：</label>
+				<div class="col-md-4 col-sm-10 left-label">
+					${userSalary.mealSubsidy }
 				</div>
 			</div>
 			<div class="form-group">

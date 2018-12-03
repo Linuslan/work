@@ -191,9 +191,24 @@ public class OAUtil {
 	public static BigDecimal getActualTotalSalary(SalaryContent sc) {
 		BigDecimal actualTotalSalary = new BigDecimal("0");
 		try {
-			actualTotalSalary = CodeUtil
-					.initBigDecimal(sc.getPretaxSalary())
-					.subtract(sc.getTax());
+			//2019年，使用新的实发工资的计算公式
+			boolean newFormula = false;
+			if(sc.getYear().intValue() >= 2018) {
+				if(sc.getMonth().intValue() > 12) {
+					newFormula = true;
+				}
+			}
+			if(newFormula) {
+				actualTotalSalary = CodeUtil.initBigDecimal(sc.getSupposedTotalSalary())
+						.subtract(CodeUtil.initBigDecimal(sc.getTotalInsurance()))
+						.add(CodeUtil.initBigDecimal(sc.getTotalSubsidy()))
+						.add(CodeUtil.initBigDecimal(sc.getOther()))
+						.subtract(CodeUtil.initBigDecimal(sc.getTax()));
+			} else {
+				actualTotalSalary = CodeUtil
+						.initBigDecimal(sc.getPretaxSalary())
+						.subtract(sc.getTax());
+			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
 			actualTotalSalary = new BigDecimal("0");

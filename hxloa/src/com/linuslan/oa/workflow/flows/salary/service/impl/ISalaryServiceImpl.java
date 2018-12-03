@@ -486,36 +486,82 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 		BigDecimal housingSubsidy = CodeUtil.parseBigDecimal(userSalary.get("HOUSING_SUBSIDY"));
 		BigDecimal basicSalary = CodeUtil.parseBigDecimal(userSalary.get("BASIC_SALARY"));
 		BigDecimal achievementSalary = CodeUtil.parseBigDecimal(userSalary.get("ACHIEVEMENT_SALARY"));
+		BigDecimal probationSalary = CodeUtil.parseBigDecimal(userSalary.get("PROBATION_SALARY"));
 		BigDecimal postSalary = CodeUtil.parseBigDecimal(userSalary.get("POST_SALARY"));
 		BigDecimal telCharge = CodeUtil.parseBigDecimal(userSalary.get("TEL_CHARGE"));
 		BigDecimal travelAllowance = CodeUtil.parseBigDecimal(userSalary.get("TRAVEL_ALLOWANCE"));
 		BigDecimal mealSubsidy = CodeUtil.parseBigDecimal(userSalary.get("MEAL_SUBSIDY"));
 		BigDecimal serviceAgeSalary = CodeUtil.parseBigDecimal(userSalary.get("SERVICE_AGE_SALARY"));
 		String seniorityStartDateStr = "";
-		try {
-			Date seniorityStartDate = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("SERVICE_AGE_SALARY_START_DATE")), "yyyy-MM-dd");
-			seniorityStartDateStr = DateUtil.parseDateToStr(seniorityStartDate, "yyyy-MM-dd");
-		} catch(Exception ex) {
-			ex.printStackTrace();
-			seniorityStartDateStr = "";
-		}
+		String salaryDate = year + "-" + (month>9 ? month:"0"+month);
+		int maxDay = DateUtil.getMaxDayOfMonth(salaryDate, "yyyy-MM");
+		String salaryStartDateStr = salaryDate+"-01";
+		String salaryEndDateStr = salaryDate+"-"+(maxDay>9 ? maxDay:"0"+maxDay);
 		
-		String salaryDate = year + "-" + month;
 		if(null != companyId && null != userId && null != departmentId) {
 			content = new SalaryContent();
+			try {
+				Date seniorityStartDate = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("SERVICE_AGE_SALARY_START_DATE")), "yyyy-MM-dd");
+				seniorityStartDateStr = DateUtil.parseDateToStr(seniorityStartDate, "yyyy-MM-dd");
+				Date salaryEndDate = DateUtil.parseStrToDate(salaryEndDateStr, "yyyy-MM-dd");
+				Date salaryStartDate = DateUtil.parseStrToDate(salaryStartDateStr, "yyyy-MM-dd");
+				try {
+					Date housingSubsidyStartTime = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("HOUSING_SUBSIDY_START_TIME")), "yyyy-MM-dd");
+					//不为空，且住房补贴开始时间在本月工资的最后一天之前或相等
+					if(null != housingSubsidyStartTime
+							&& (housingSubsidyStartTime.before(salaryEndDate) || housingSubsidyStartTime.equals(salaryEndDate))) {
+						content.setHousingSubsidy(housingSubsidy);
+					}
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				try {
+					Date telChargeStartTime = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("TEL_CHARGE_START_DATE")), "yyyy-MM-dd");
+					if(null != telChargeStartTime
+							&& (telChargeStartTime.before(salaryEndDate) || telChargeStartTime.equals(salaryEndDate))) {
+						content.setTelCharge(telCharge);
+					}
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				try {
+					Date travelAllowanceStartTime = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("TRAVEL_ALLOWANCE_START_DATE")), "yyyy-MM-dd");
+					if(null != travelAllowanceStartTime
+							&& (travelAllowanceStartTime.before(salaryEndDate) || travelAllowanceStartTime.equals(salaryEndDate))) {
+						content.setTravelAllowance(travelAllowance);
+					}
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				try {
+					Date probationEndDate = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("PROBATION_END_TIME")), "yyyy-MM-dd");
+					if(null != probationEndDate
+							&& (salaryStartDate.before(probationEndDate) || salaryStartDate.equals(probationEndDate))) {
+						achievementSalary = CodeUtil.parseBigDecimal(0D);
+						basicSalary = probationSalary;
+						postSalary = CodeUtil.parseBigDecimal(0D);
+					}
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			} catch(Exception ex) {
+				ex.printStackTrace();
+				seniorityStartDateStr = "";
+			}
 			content.setCreateDate(new Date());
 			content.setDepartmentId(departmentId);
-			content.setAchievementSalary(achievementSalary);
 			content.setAchievementScore(totalScore);
 			content.setBasicSalary(basicSalary);
+			content.setAchievementSalary(achievementSalary);
 			content.setPostSalary(postSalary);
 			//得到初始化的实际绩效工资
 			content.setActualAchievementSalary(
 					CodeUtil.parseBigDecimal(
 							OAUtil.getActualAchievementSalary(
-									totalScore, achievementSalary.toString())));
+									totalScore, content.getAchievementSalary().toString())));
 			content.setCommission(addMoney);
-			content.setHousingSubsidy(housingSubsidy);
+			//移到上面加了时间判断
+			//content.setHousingSubsidy(housingSubsidy);
 			content.setMealSubsidy(mealSubsidy);
 			content.setPostId(postId);
 			//得到工龄工资
@@ -528,8 +574,8 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				content.setSeniorityPay(CodeUtil.parseBigDecimal("0.00"));
 			}
 			
-			content.setTelCharge(telCharge);
-			content.setTravelAllowance(travelAllowance);
+			//content.setTelCharge(telCharge);
+			//content.setTravelAllowance(travelAllowance);
 			content.setTypeId(typeId);
 			content.setUserId(userId);
 			content.setUserName(userName);

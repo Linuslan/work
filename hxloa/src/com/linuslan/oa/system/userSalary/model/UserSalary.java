@@ -210,6 +210,22 @@ public class UserSalary {
 	 */
 	@Column(name="post_salary")
 	private String postSalary;
+	
+	//试用期工资
+	@Column(name="probation_salary")
+	private BigDecimal probationSalary;
+	
+	//试用期开始时间
+	@Column(name="probation_start_time")
+	private Date probationStartTime;
+	
+	//试用期结束时间
+	@Column(name="probation_end_time")
+	private Date probationEndTime;
+	
+	//住房补贴开始时间
+	@Column(name="housing_subsidy_start_time")
+	private Date housingSubsidyStartTime;
 
 	public Long getId() {
 		return id;
@@ -508,5 +524,37 @@ public class UserSalary {
 
 	public void setPostSalary(String postSalary) {
 		this.postSalary = postSalary;
+	}
+
+	public BigDecimal getProbationSalary() {
+		return probationSalary;
+	}
+
+	public void setProbationSalary(BigDecimal probationSalary) {
+		this.probationSalary = probationSalary;
+	}
+
+	public Date getProbationStartTime() {
+		return probationStartTime;
+	}
+
+	public void setProbationStartTime(Date probationStartTime) {
+		this.probationStartTime = probationStartTime;
+	}
+
+	public Date getProbationEndTime() {
+		return probationEndTime;
+	}
+
+	public void setProbationEndTime(Date probationEndTime) {
+		this.probationEndTime = probationEndTime;
+	}
+
+	public Date getHousingSubsidyStartTime() {
+		return housingSubsidyStartTime;
+	}
+
+	public void setHousingSubsidyStartTime(Date housingSubsidyStartTime) {
+		this.housingSubsidyStartTime = housingSubsidyStartTime;
 	}
 }

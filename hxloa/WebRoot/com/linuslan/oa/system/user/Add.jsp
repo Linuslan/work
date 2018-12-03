@@ -245,6 +245,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<div class="col-md-3 col-sm-10 no-padding">
 												<input name="userSalary.achievementSalary" type="number" value="0" class="form-control">
 											</div>
+											<div class="col-md-1 col-sm-12"></div>
+											<label for="name" class="col-md-2 control-label">试用期工资：</label>
+											<div class="col-md-3 col-sm-10 no-padding">
+												<input name="userSalary.probationSalary" type="number" value="0" class="form-control">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="name" class="col-md-2 control-label">试用期开始时间：</label>
+											<div class="col-md-3 col-sm-10 no-padding">
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input name="userSalary.probationStartTime" type="text" value="" readonly="readonly" class="form-control pull-right date showText" id="text">
+												</div>
+											</div>
+											<div class="col-md-1 col-sm-12"></div>
+											<label for="name" class="col-md-2 control-label">试用期结束时间：</label>
+											<div class="col-md-3 col-sm-10 no-padding">
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input name="userSalary.probationEndTime" type="text" value="" readonly="readonly" class="form-control pull-right date showText" id="text">
+												</div>
+											</div>
 										</div>
 										<div class="form-group">
 											<label for="name" class="col-md-2 control-label">生效时间：</label>
@@ -360,14 +386,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="name" class="col-md-2 control-label">工作餐补贴：</label>
-											<div class="col-md-3 col-sm-10 no-padding">
-												<input name="userSalary.mealSubsidy" type="text" value="0" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12"></div>
 											<label for="name" class="col-md-2 control-label">住房补贴：</label>
 											<div class="col-md-3 col-sm-10 no-padding">
 												<input name="userSalary.housingSubsidy" type="text" value="0" class="form-control">
+											</div>
+											<div class="col-md-1 col-sm-12"></div>
+											<label for="name" class="col-md-2 control-label">住房补贴开始时间：</label>
+											<div class="col-md-3 col-sm-10 no-padding">
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input name="userSalary.housingSubsidyStartTime" type="text" value="" readonly="readonly" class="form-control pull-right date showText" id="text">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="name" class="col-md-2 control-label">工作餐补贴：</label>
+											<div class="col-md-3 col-sm-10 no-padding">
+												<input name="userSalary.mealSubsidy" type="text" value="0" class="form-control">
 											</div>
 										</div>
 										<div class="form-group">

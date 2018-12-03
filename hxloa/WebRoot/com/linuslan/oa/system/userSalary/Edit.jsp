@@ -74,6 +74,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-4 col-sm-10 no-padding">
 					<input name="userSalary.achievementSalary" type="number" value="${userSalary.achievementSalary }" class="form-control">
 				</div>
+				<label for="name" class="col-sm-2 control-label">试用期工资：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.probationSalary" type="number" value="${userSalary.probationSalary }" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">试用期开始时间：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-calendar"></i>
+						</div>
+						<input name="userSalary.probationStartTime" type="text" value="<fmt:formatDate value="${userSalary.probationStartTime }" pattern="yyyy-MM-dd"/>" readonly="readonly" class="form-control pull-right date showText" id="text">
+					</div>
+				</div>
+				<label for="name" class="col-sm-2 control-label">试用期结束时间：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-calendar"></i>
+						</div>
+						<input name="userSalary.probationEndTime" type="text" value="<fmt:formatDate value="${userSalary.probationEndTime }" pattern="yyyy-MM-dd"/>" readonly="readonly" class="form-control pull-right date showText" id="text">
+					</div>
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">生效时间：</label>
@@ -182,13 +206,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="name" class="col-sm-2 control-label">工作餐补贴：</label>
-				<div class="col-md-4 col-sm-10 no-padding">
-					<input name="userSalary.mealSubsidy" type="text" value="${userSalary.mealSubsidy }" class="form-control">
-				</div>
 				<label for="name" class="col-sm-2 control-label">住房补贴：</label>
 				<div class="col-md-4 col-sm-10 no-padding">
 					<input name="userSalary.housingSubsidy" type="text" value="${userSalary.housingSubsidy }" class="form-control">
+				</div>
+				<label for="name" class="col-sm-2 control-label">住房补贴开始时间：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-calendar"></i>
+						</div>
+						<input name="userSalary.housingSubsidyStartTime" type="text" value="<fmt:formatDate value="${userSalary.housingSubsidyStartTime }" pattern="yyyy-MM-dd"/>" readonly="readonly" class="form-control pull-right date showText" id="text">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">工作餐补贴：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.mealSubsidy" type="text" value="${userSalary.mealSubsidy }" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
