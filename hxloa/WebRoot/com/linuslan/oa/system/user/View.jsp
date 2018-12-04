@@ -221,7 +221,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<div class="col-md-3 col-sm-10 left-label">
 												${userSalary.achievementSalary }
 											</div>
-											<label for="name" class="col-sm-2 control-label">绩效工资：</label>
+											<div class="col-md-1 col-sm-12 "></div>
+											<label for="name" class="col-sm-2 control-label">试用期工资：</label>
 											<div class="col-md-3 col-sm-10 left-label">
 												${userSalary.probationSalary }
 											</div>
