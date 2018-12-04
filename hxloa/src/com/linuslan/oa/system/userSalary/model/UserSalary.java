@@ -420,7 +420,7 @@ public class UserSalary {
 	}
 
 	public String getServiceAgeSalary() {
-		if(this.getStatus() == 0) {
+		if(null == this.status || this.getStatus() == 0) {
 			return "0";
 		} else {
 			try {
