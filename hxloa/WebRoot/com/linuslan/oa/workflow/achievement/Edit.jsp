@@ -221,6 +221,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 subGridRowColapsed: function(subgrid_id, rowid) {
                 	return true;
                 },
+                jsonReader: {
+                	root: "contents"
+                },
                 subGridRowExpanded: function(subgrid_id, rowid) {
                 	var rowData = $("#achievementContentDatagrid_edit").getRowData(rowid);
                 	var id = rowData.id;

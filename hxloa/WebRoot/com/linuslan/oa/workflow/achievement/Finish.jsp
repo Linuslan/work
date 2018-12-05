@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-group">
 							<label for="text" class="col-md-2 col-sm-4 control-label">当前总分：</label>
 							<div class="col-md-3 col-sm-8 left-label">
-								${achievement.totalScore }
+								${achievement.leaderScore }
 							</div>
 							<div class="col-md-1 col-sm-12 no-padding"></div>
 							<label for="text" class="col-md-2 col-sm-4 control-label">自评总分：</label>
@@ -136,11 +136,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 colModel: [{
                 	label: "ID", name: "id", hidden: true, key: true
                 }, {
-                	label: "审核人", name: "auditorName", width: 150, align: "center"
+                	label: "创建审核人", name: "auditorName", width: 150, align: "center"
                 }, {
-                	label: "审核时间", name: "auditDate", width: 200, align: "center"
+                	label: "创建审核时间", name: "auditDate", width: 200, align: "center"
                 }, {
-                	label: "意见", name: "opinion", width: 400, align: "center"
+                	label: "创建审核意见", name: "opinion", width: 400, align: "center"
                 }, {
                 	label: "操作类型", name: "passType", width: 100, align: "center",
                 	formatter: function(cellvalue, options, rowObject) {
@@ -175,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		return decode(rowObject.content);
             	}
             }, {
-            	label: "数据来源", name: "source", width: 150, align: "left",
+            	label: "数据来源", name: "source", width: 200, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.source);
             	}
@@ -187,14 +187,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }, {
             	label: "权重", name: "scoreWeight", width: 50, align: "center"
             }, {
-            	label: "完成情况", name: "performance", width: 350, align: "left",
+            	label: "完成情况", name: "performance", width: 250, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.performance);
             	}
             }, {
             	label: "自评", name: "userScore", width: 50, align: "center"
-            }, {
-            	label: "领导评分", name: "leaderScore", width: 100, align: "center"
             }];
    			console.log("开始请求数据");
    			$.ajax({
@@ -266,11 +264,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		                			colModel: [{
    					                	label: "ID", name: "id", hidden: true
    					                }, {
-   					                	label: "审核人", name: "userName", width: 150, align: "center"
+   					                	label: "创建审核人", name: "userName", width: 150, align: "center"
    					                }, {
-   					                	label: "审核意见", name: "opinion", width: 400, align: "center"
+   					                	label: "创建审核意见", name: "opinion", width: 400, align: "center"
    					                }, {
-   					                	label: "审核时间", name: "createDate", width: 150, align: "center"
+   					                	label: "创建审核时间", name: "createDate", width: 150, align: "center"
    					                }]
    		                		});
    		                	}

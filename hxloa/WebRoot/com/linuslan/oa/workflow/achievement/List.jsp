@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			$("#addAchievement").click(function() {
    				achievementDialog = BootstrapDialog.show({
 				    title: "创建绩效",
-				    width: "80%",
+				    width: "95%",
 				    type: BootstrapDialog.TYPE_DEFAULT,
 				    message: $("<div></div>").load(getRoot() + "workflow/achievement/queryById.action?returnType=add"),
 				    draggable: true,
@@ -311,7 +311,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		function editAchievement(id) {
    			achievementDialog = BootstrapDialog.show({
 			    title: "编辑绩效",
-			    width: "80%",
+			    width: "95%",
 			    type: BootstrapDialog.TYPE_DEFAULT,
 			    message: $("<div></div>").load(getRoot() + "workflow/achievement/queryById.action?returnType=edit&achievement.id="+id),
 			    draggable: true,
@@ -550,7 +550,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		}
    			achievementDialog = BootstrapDialog.show({
 			    title: "绩效详情",
-			    width: "90%",
+			    width: "95%",
 			    type: BootstrapDialog.TYPE_DEFAULT,
 			    message: $("<div></div>").load(getRoot() + "workflow/achievement/queryById.action?returnType="+returnType+"&achievement.id="+id),
 			    draggable: true,

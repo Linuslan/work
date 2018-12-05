@@ -61,6 +61,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								${achievement.year }-${achievement.month }
 							</div>
 						</div>
+						<div class="form-group">
+							<label for="text" class="col-md-2 col-sm-4 control-label">备注：</label>
+							<div class="col-md-10 col-sm-8 left-label totalScore" style="color: red">
+								直属领导需对员工每项绩效指标进行评分意见填写，不可用同意等词语，领导1意见、领导2意见可对上级的评分进行同意，或是另写意见。
+							</div>
+						</div>
 			    	</div>
 			    	<div class="box-body">
 			    		<table id="achievementContentDatagrid_audit"></table>
@@ -169,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		return decode(rowObject.source);
                 	}
                 }, {
-                	label: "标准", name: "formula", width: 400, align: "left",
+                	label: "标准", name: "formula", width: 300, align: "left",
                 	formatter: function(cellvalue, options, rowObject) {
                 		return decode(rowObject.formula);
                 	}
@@ -181,6 +187,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 //width: "100%",
                 rowNum: 20,
                 subGrid: true,
+                jsonReader: {
+                	root: "contents"
+                },
                 subGridOptions: {
                 	expandOnLoad: true
                 },

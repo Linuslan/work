@@ -277,6 +277,7 @@ public class AchievementAction extends BaseAction {
 			jsonConfig.registerJsonValueProcessor(Date.class, new DateProcessor());
 			JSONObject json = JSONObject.fromObject(resultMap, jsonConfig);
 			this.printResult(json.toString());
+			System.out.println(json.toString());
 		} catch(Exception ex) {
 			logger.error(CodeUtil.getStackTrace(ex));
 		}

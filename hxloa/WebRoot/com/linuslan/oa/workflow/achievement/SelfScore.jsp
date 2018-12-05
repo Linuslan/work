@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-group">
 							<label for="text" class="col-md-2 col-sm-4 control-label">当前总分：</label>
 							<div class="col-md-3 col-sm-8 left-label">
-								${achievement.totalScore }
+								${achievement.leaderScore }
 							</div>
 							<div class="col-md-1 col-sm-12 no-padding"></div>
 							<label for="text" class="col-md-2 col-sm-4 control-label">自评总分：</label>

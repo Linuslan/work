@@ -73,12 +73,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="form-group">
 							<label for="text" class="col-md-2 col-sm-4 control-label">总分：</label>
 							<div class="col-md-3 col-sm-8 left-label totalScore">
-								${achievement.totalScore }
+								${achievement.leaderScore }
 							</div>
 							<div class="col-md-1 col-sm-12 no-padding"></div>
 							<label for="text" class="col-md-2 col-sm-4 control-label">自评总分：</label>
 							<div class="col-md-3 col-sm-8 left-label selfTotalScore">
 								${achievement.userScore }
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="text" class="col-md-2 col-sm-4 control-label">备注：</label>
+							<div class="col-md-10 col-sm-8 left-label totalScore" style="color: red">
+								直属领导需对员工每项绩效指标进行评分意见填写，不可用同意等词语，领导1意见、领导2意见可对上级的评分进行同意，或是另写意见。
 							</div>
 						</div>
 						<!-- <div class="form-group">
@@ -153,11 +159,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 colModel: [{
                 	label: "ID", name: "id", hidden: true, key: true
                 }, {
-                	label: "审核人", name: "auditorName", width: 150, align: "center"
+                	label: "创建审核人", name: "auditorName", width: 150, align: "center"
                 }, {
-                	label: "审核时间", name: "auditDate", width: 200, align: "center"
+                	label: "创建审核时间", name: "auditDate", width: 200, align: "center"
                 }, {
-                	label: "意见", name: "opinion", width: 400, align: "center"
+                	label: "创建审核意见", name: "opinion", width: 400, align: "center"
                 }, {
                 	label: "操作类型", name: "passType", width: 100, align: "center",
                 	formatter: function(cellvalue, options, rowObject) {
@@ -185,12 +191,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		return decode(rowObject.title);
             	}
             }, {
-            	label: "具体指标", name: "content", width: 350, align: "left",
+            	label: "具体指标", name: "content", width: 300, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.content);
             	}
             }, {
-            	label: "数据来源", name: "source", width: 150, align: "left",
+            	label: "数据来源", name: "source", width: 200, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.source);
             	}
@@ -202,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }, {
             	label: "权重", name: "scoreWeight", width: 50, align: "center"
             }, {
-            	label: "完成情况", name: "performance", width: 350, align: "left",
+            	label: "完成情况", name: "performance", width: 250, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.performance);
             	}
