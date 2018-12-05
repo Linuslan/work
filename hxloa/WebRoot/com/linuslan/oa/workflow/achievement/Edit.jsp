@@ -241,11 +241,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 			colModel: [{
 			                	label: "ID", name: "id", hidden: true
 			                }, {
-			                	label: "审核人", name: "userName", width: 150, align: "center"
+			                	label: "创建审核人", name: "userName", width: 150, align: "center"
 			                }, {
-			                	label: "审核意见", name: "opinion", width: 400, align: "center"
+			                	label: "创建审核意见", name: "opinion", width: 400, align: "center"
 			                }, {
-			                	label: "审核时间", name: "createDate", width: 150, align: "center"
+			                	label: "创建审核时间", name: "createDate", width: 150, align: "center"
 			                }]
                 		});
                 	}
@@ -266,11 +266,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 colModel: [{
                 	label: "ID", name: "id", hidden: true, key: true
                 }, {
-                	label: "审核人", name: "auditorName", width: 150, align: "center"
+                	label: "创建审核人", name: "auditorName", width: 150, align: "center"
                 }, {
-                	label: "审核时间", name: "auditDate", width: 200, align: "center"
+                	label: "创建审核时间", name: "auditDate", width: 200, align: "center"
                 }, {
-                	label: "意见", name: "opinion", width: 400, align: "center"
+                	label: "创建审核意见", name: "opinion", width: 400, align: "center"
                 }, {
                 	label: "操作类型", name: "passType", width: 100, align: "center",
                 	formatter: function(cellvalue, options, rowObject) {

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="wf_achievement_content")
@@ -55,6 +56,27 @@ public class AchievementContent {
 	
 	@Column(name="is_delete")
 	private Integer isDelete=0;
+	
+	@Transient
+	private Long leader1;
+	
+	@Transient
+	private Long leader2;
+	
+	@Transient
+	private Long leader3;
+	
+	@Transient
+	private AchievementContentScore contentScore1;
+	
+	@Transient
+	private AchievementContentScore contentScore2;
+	
+	@Transient
+	private AchievementContentScore contentScore3;
+	
+	@Transient
+	private String leaderScoreOpinion;
 
 	public Long getId() {
 		return id;
@@ -158,5 +180,61 @@ public class AchievementContent {
 
 	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
+	}
+
+	public Long getLeader1() {
+		return leader1;
+	}
+
+	public void setLeader1(Long leader1) {
+		this.leader1 = leader1;
+	}
+
+	public Long getLeader2() {
+		return leader2;
+	}
+
+	public void setLeader2(Long leader2) {
+		this.leader2 = leader2;
+	}
+
+	public Long getLeader3() {
+		return leader3;
+	}
+
+	public void setLeader3(Long leader3) {
+		this.leader3 = leader3;
+	}
+
+	public AchievementContentScore getContentScore1() {
+		return contentScore1;
+	}
+
+	public void setContentScore1(AchievementContentScore contentScore1) {
+		this.contentScore1 = contentScore1;
+	}
+
+	public AchievementContentScore getContentScore2() {
+		return contentScore2;
+	}
+
+	public void setContentScore2(AchievementContentScore contentScore2) {
+		this.contentScore2 = contentScore2;
+	}
+
+	public AchievementContentScore getContentScore3() {
+		return contentScore3;
+	}
+
+	public void setContentScore3(AchievementContentScore contentScore3) {
+		this.contentScore3 = contentScore3;
+	}
+
+	public String getLeaderScoreOpinion() {
+		return leaderScoreOpinion;
+	}
+
+	public void setLeaderScoreOpinion(String leaderScoreOpinion) {
+		this.leaderScoreOpinion = leaderScoreOpinion;
 	}
 }

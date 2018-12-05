@@ -22,12 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<style>
-		.ui-jqgrid table>tbody>tr>td.vertial_top,
-		.ui-jqgrid table>tbody>tr>th.vertial_top,
-		.ui-jqgrid table>tfoot>tr>td.vertial_top,
-		.ui-jqgrid table>tfoot>tr>th.vertial_top,
-		.ui-jqgrid table>thead>tr>td.vertial_top,
-		.ui-jqgrid table>thead>tr>th.vertial_top {
+		.ui-jqgrid table>tbody>tr>td.vertical_top,
+		.ui-jqgrid table>tbody>tr>th.vertical_top,
+		.ui-jqgrid table>tfoot>tr>td.vertical_top,
+		.ui-jqgrid table>tfoot>tr>th.vertical_top,
+		.ui-jqgrid table>thead>tr>td.vertical_top,
+		.ui-jqgrid table>thead>tr>th.vertical_top {
 			vertical-align: top;
 		}
 	</style>
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								${achievement.userScore }
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="text" class="col-md-2 col-sm-4 control-label">当前得分：</label>
 							<div class="col-md-3 col-sm-8 left-label leaderTotalScore">
 								${(achievement.leaderScore + achievement.addScore) == 0 ? achievement.userScore : (achievement.leaderScore + achievement.addScore)}
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="col-md-3 col-sm-8 left-label">
 								
 							</div>
-						</div>
+						</div> -->
 			    	</div>
 			    	<div class="box-body">
 			    		<table id="achievementContentDatagrid_leaderScore"></table>
@@ -177,100 +177,120 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		}
    		
    		function generateAuditAchievementContenGrid() {
+   			var columns = [{
+            	label: "ID", name: "id", hidden: true
+            }, {
+            	label: "考核项目", name: "title", width: 150, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.title);
+            	}
+            }, {
+            	label: "具体指标", name: "content", width: 350, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.content);
+            	}
+            }, {
+            	label: "数据来源", name: "source", width: 150, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.source);
+            	}
+            }, {
+            	label: "标准", name: "formula", width: 200, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.formula);
+            	}
+            }, {
+            	label: "权重", name: "scoreWeight", width: 50, align: "center"
+            }, {
+            	label: "完成情况", name: "performance", width: 350, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.performance);
+            	}
+            }, {
+            	label: "自评", name: "userScore", width: 50, align: "center"
+            }, {
+            	label: "领导评分", name: "leaderScore", width: 100, align: "center", editable: true, edittype: "custom",
+            	editoptions: {custom_element: createNumberBox, custom_value: operateNumberValue, name: "leaderScore"},
+            	formatter: function(cellValue, options, rowObject) {
+            		if(rowObject.leaderScore <= 0) {
+            			return rowObject.userScore;
+            		} else {
+            			return rowObject.leaderScore;
+            		}
+            	}
+            }, {
+            	label: "领导意见", name: "leaderScoreOpinion", width: 100, align: "center", editable: true, edittype: "custom",
+            	editoptions: {
+            		rows:"10",
+            		width:"100%",
+            		custom_element: createTextareaBox,
+            		custom_value: operateTextareaValue,
+            		name: "leaderScoreOpinion"
+            	},
+            	formatter: function(cellValue, options, rowObject) {
+            		return decode(rowObject.leaderScoreOpinion);
+            	}
+            }];
    			var id = $("#leaderScoreAchievementForm").find("input.achievementId").val();
    			$.ajax({
    				url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
    				method: "POST",
    				success: function(data) {
    					var json = eval("("+data+")");
-   					console.log(json);
+   					var leaders = json.leaders;
+   					var gridData = json.contents;
+   					for(var i = 0; i < leaders.length; i ++) {
+   						var leader = leaders[i];
+   						columns.push({label: leader.text+"评分", name: "contentScore"+(i+1), width: 150, align: "left", classes: "vertical_top",
+   	   		            	formatter: function(cellvalue, options, rowObject) {
+   	   		            		var opinion = "暂未填写";
+   	   		            		var score = "未评分";
+   	   		            		if(cellvalue) {
+   	   		            			opinion = cellvalue.opinion;
+   	   		            			score = cellvalue.score;
+   	   		            		}
+   	   		            		//return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>"+score+"</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>"+opinion+"</div></div>";
+   	   		            		return "<div style='line-height:30px;'>分数："+score+"</div><div style='line-height:30px;'>意见："+opinion+"</div>";
+   	   		            	}
+   						});
+   					}
+   					$("#achievementContentDatagrid_leaderScore").jqGrid({
+   		   				//url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
+   		                //mtype: "POST",
+   		                data: gridData,
+   		                shrinkToFit: true,
+   		                //autowidth: true,
+   		                //scrollrows: false,
+   		                //scroll: false,
+   						styleUI : "Bootstrap",
+   		                datatype: "local",
+   		                gridComplete: function() {
+   		                	$("#achievementContentDatagrid_leaderScore").setGridWidth($("#achievement").width()*0.99);
+   		                	//$("#achievementContentDatagrid_leaderScore").closest(".ui-jqgrid-bdiv").css({"overflow-x" : "auto"});
+   		                },
+   		                //data: [{"id": 1, "remittanceDate": "2016-04-05", "achievementClassName": "d", "achievementClassId": 4, "content": "测试", "money": "5000", "remark": "cs"}],
+   		                colModel: columns,
+   						viewrecords: true,
+   		                height: "100%",
+   		                //width: "100%",
+   		                rowNum: 20,
+   		                ondblClickRow: function(id){
+   		                	if(id && id!==achievementAuditlastsel2){
+   		                		if(achievementAuditlastsel2) {
+   		                			jQuery("#achievementContentDatagrid_leaderScore").saveRow(achievementAuditlastsel2, {
+   			                			url: "clientArray",
+   			                			aftersavefunc: function() {
+   			                				getAchievementTotalLeaderScore();
+   			                			}
+   			                		});
+   		                		}
+   		                		jQuery("#achievementContentDatagrid_leaderScore").editRow(id,true);
+   		                		achievementAuditlastsel2=id;
+   		                	}
+   					    }
+   		            });
    				}
    			});
-   			$("#achievementContentDatagrid_leaderScore").jqGrid({
-   				url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
-                mtype: "POST",
-                shrinkToFit: true,
-                //autowidth: true,
-                //scrollrows: false,
-                //scroll: false,
-				styleUI : "Bootstrap",
-                datatype: "json",
-                gridComplete: function() {
-                	$("#achievementContentDatagrid_leaderScore").setGridWidth($("#achievement").width()*0.99);
-                	//$("#achievementContentDatagrid_leaderScore").closest(".ui-jqgrid-bdiv").css({"overflow-x" : "auto"});
-                },
-                //data: [{"id": 1, "remittanceDate": "2016-04-05", "achievementClassName": "d", "achievementClassId": 4, "content": "测试", "money": "5000", "remark": "cs"}],
-                colModel: [{
-                	label: "ID", name: "id", hidden: true
-                }, {
-                	label: "考核项目", name: "title", width: 150, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.title);
-                	}
-                }, {
-                	label: "具体指标", name: "content", width: 350, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.content);
-                	}
-                }, {
-                	label: "数据来源", name: "source", width: 150, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.source);
-                	}
-                }, {
-                	label: "标准", name: "formula", width: 200, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.formula);
-                	}
-                }, {
-                	label: "权重", name: "scoreWeight", width: 50, align: "center"
-                }, {
-                	label: "完成情况", name: "performance", width: 350, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.performance);
-                	}
-                }, {
-                	label: "自评分数", name: "userScore", width: 50, align: "center"
-                }, {
-                	label: "领导评分", name: "leaderScore", width: 100, align: "center", editable: true, edittype: "custom",
-                	editoptions: {custom_element: createNumberBox, custom_value: operateNumberValue, name: "leaderScore"},
-                	formatter: function(cellValue, options, rowObject) {
-                		if(rowObject.leaderScore <= 0) {
-                			return rowObject.userScore;
-                		} else {
-                			return rowObject.leaderScore;
-                		}
-                	}
-                }, {
-                	label: "陈玲评分", name: "", width: 150, align: "left", classes: "vertial_top",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>50</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>abc</div></div>";
-                	}
-                }, {
-                	label: "陈国栋评分", name: "", width: 150, align: "left", classes: "vertial_top",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>50</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>abc</div></div>";
-                	}
-                }],
-				viewrecords: true,
-                height: "100%",
-                //width: "100%",
-                rowNum: 20,
-                ondblClickRow: function(id){
-                	if(id && id!==achievementAuditlastsel2){
-                		if(achievementAuditlastsel2) {
-                			jQuery("#achievementContentDatagrid_leaderScore").saveRow(achievementAuditlastsel2, {
-	                			url: "clientArray",
-	                			aftersavefunc: function() {
-	                				getAchievementTotalLeaderScore();
-	                			}
-	                		});
-                		}
-                		jQuery("#achievementContentDatagrid_leaderScore").editRow(id,true);
-                		achievementAuditlastsel2=id;
-                	}
-			    }
-            });
    		}
    		
    		/**
@@ -330,7 +350,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				}
 			}
-			var addScore = $("#leaderScoreAchievementForm").find("input[name='achievement.addScore']").val();
+			//var addScore = $("#leaderScoreAchievementForm").find("input[name='achievement.addScore']").val();
+			var addScore = 0;
 			totalScore = totalScore + parseInt(addScore);
 			$("#leaderScoreAchievementForm").find("div.leaderTotalScore").html(totalScore);
 			//$("#leaderScoreAchievementForm").find("div.totalScore").html(totalScore);

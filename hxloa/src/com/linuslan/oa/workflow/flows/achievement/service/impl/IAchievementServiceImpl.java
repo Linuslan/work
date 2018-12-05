@@ -404,7 +404,7 @@ public class IAchievementServiceImpl extends IBaseServiceImpl implements
 		 * 如果是评分阶段，则添加评分记录
 		 */
 		if(6 == persist.getFlowStatus()) {
-			List<AchievementContentScore> scores = this.generateContentScoreLog(persistContens);
+			List<AchievementContentScore> scores = this.generateContentScoreLog(contents);
 			this.achievementDao.saveContentScoreBatch(scores);
 		}
 		if(6 == persist.getFlowStatus() || 5 == persist.getFlowStatus() || 7 == persist.getFlowStatus()) {
@@ -511,6 +511,7 @@ public class IAchievementServiceImpl extends IBaseServiceImpl implements
 			score.setIsDelete(0);
 			score.setScore(content.getLeaderScore());
 			score.setUserId(HttpUtil.getLoginUser().getId());
+			score.setOpinion(content.getLeaderScoreOpinion());
 			scores.add(score);
 		}
 		return scores;

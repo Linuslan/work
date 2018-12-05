@@ -659,8 +659,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			}
    			for(var i = 0; i < rows.length; i ++) {
    				var content = rows[i];
+   				console.log(content);
    				for(var name in content) {
-   					if(!name || ""==$.trim(name) || "operationCell" == name) {
+   					if(!name || ""==$.trim(name) || "operationCell" == name || name.indexOf("contentScore")>=0) {
    						continue;
    					}
    					var value = content[name];
@@ -678,6 +679,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    				BootstrapDialog.danger("获取到的项目为空");
    				return false;
    			}
+   			console.log(contents);
    			return contents;
    		}
    		

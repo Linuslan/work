@@ -222,23 +222,60 @@ public class AchievementAction extends BaseAction {
 			Achievement achievement = this.achievementService.queryById(this.achievement.getId());
 			Long userId = achievement.getUserId();
 			User user = this.userService.queryById(userId);
-			Long groupId = user.getGroupId();
-			int leaderCnt = 0;
-			List<Long> groupList = new ArrayList<Long> ();
-			while(groupId != null) {
-				Group group = this.groupService.queryById(groupId);
-				groupId = group.getPid();
-				if(null == groupId) {
-					break;
+			Long leaderId = user.getLeaderId();
+			List<Long> leaderIds = new ArrayList<Long> ();
+			List<Group> groupList = new ArrayList<Group> ();
+			while(null != leaderId) {
+				leaderIds.add(leaderId);
+				User leader = this.userService.queryById(leaderId);
+				Long gid = leader.getGroupId();
+				if(null != gid) {
+					Group group = this.groupService.queryById(gid);
+					if(null != group) {
+						groupList.add(group);
+					}
 				}
-				groupList.add(groupId);
+				leaderId = leader.getLeaderId();
 			}
+			int leaderCnt = 0;
 			List<AchievementContent> contents = this.achievementService.queryContentsByAchievementId(this.achievement.getId());
 			List<AchievementContentScore> contentScores = this.achievementService.queryScoreOpinionByAchievementId(this.achievement.getId());
-			
+			for(int i = 0; i < contents.size(); i ++) {
+				AchievementContent content = contents.get(i);
+				for(int j = 0; j < contentScores.size(); j ++) {
+					AchievementContentScore score = contentScores.get(j);
+					if(content.getId().longValue() == score.getContentId().longValue()) {
+						leaderId = score.getUserId();
+						User leader = this.userService.queryById(leaderId);
+						Long leaderGroupId = leader.getGroupId();
+						if(null != groupList.get(0)
+								&& leaderGroupId.longValue() == groupList.get(0).getId().longValue()) {
+							if(null == content.getContentScore1()
+									|| content.getContentScore1().getId() < score.getId()) {
+								content.setContentScore1(score);
+							}
+						} else if(null != groupList.get(1)
+								&& leaderGroupId.longValue() == groupList.get(1).getId().longValue()) {
+							if(null == content.getContentScore2()
+									|| content.getContentScore2().getId() < score.getId()) {
+								content.setContentScore2(score);
+							}
+						} else if(null != groupList.get(2)
+								&& leaderGroupId.longValue() == groupList.get(2).getId().longValue()) {
+							if(null == content.getContentScore3()
+									|| content.getContentScore3().getId() < score.getId()) {
+								content.setContentScore3(score);
+							}
+						}
+					}
+				}
+			}
+			Map<String, Object> resultMap = new HashMap<String, Object> ();
+			resultMap.put("leaders", groupList);
+			resultMap.put("contents", contents);
 			JsonConfig jsonConfig = new JsonConfig();
 			jsonConfig.registerJsonValueProcessor(Date.class, new DateProcessor());
-			JSONArray json = JSONArray.fromObject(contents, jsonConfig);
+			JSONObject json = JSONObject.fromObject(resultMap, jsonConfig);
 			this.printResult(json.toString());
 		} catch(Exception ex) {
 			logger.error(CodeUtil.getStackTrace(ex));

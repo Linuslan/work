@@ -20,7 +20,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<style>
+		.ui-jqgrid table>tbody>tr>td.vertical_top,
+		.ui-jqgrid table>tbody>tr>th.vertical_top,
+		.ui-jqgrid table>tfoot>tr>td.vertical_top,
+		.ui-jqgrid table>tfoot>tr>th.vertical_top,
+		.ui-jqgrid table>thead>tr>td.vertical_top,
+		.ui-jqgrid table>thead>tr>th.vertical_top {
+			vertical-align: top;
+		}
+	</style>
   </head>
   
   <body>
@@ -101,85 +110,112 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		});
    		var rowDatas;
    		function generateSelfScoreGrid() {
+   			var columns = [{
+            	label: "ID", name: "id", hidden: true
+            }, {
+            	label: "考核项目", name: "title", width: 150, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.title);
+            	}
+            }, {
+            	label: "具体指标", name: "content", width: 350, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.content);
+            	}
+            }, {
+            	label: "数据来源", name: "source", width: 150, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.source);
+            	}
+            }, {
+            	label: "标准", name: "formula", width: 200, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.formula);
+            	}
+            }, {
+            	label: "权重", name: "scoreWeight", width: 50, align: "center",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.scoreWeight);
+            	}
+            }, {
+            	label: "完成情况", name: "performance", width: 350, align: "left", editable: true, edittype: "custom",
+            	editoptions: {
+            		rows: "10",
+            		width: "100%",
+            		custom_element: createTextareaBox,
+            		custom_value: operateTextareaValue,
+            		name: "performance"
+            	},
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.performance);
+            	}
+            }, {
+            	label: "自评分数", name: "userScore", width: 100, align: "center", editable: true, edittype: "custom",
+            	editoptions: {
+            		custom_element: createNumberBox,
+            		custom_value: operateNumberValue,
+            		name: "userScore"
+            	}
+            }];
    			var id = $("#selfScoreAchievementForm").find("input.achievementId").val();
-   			$("#achievementContentDatagrid_selfScore").jqGrid({
+   			$.ajax({
    				url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
-                mtype: "POST",
-                shrinkToFit: true,
-                /*autowidth: true,
-                scrollrows: false,
-                scroll: false,*/
-				styleUI : "Bootstrap",
-                datatype: "json",
-                gridComplete: function() {
-                	$("#achievementContentDatagrid_selfScore").setGridWidth($("#achievement").width()*0.99);
-                	//$("#achievementContentDatagrid_selfScore").closest(".ui-jqgrid-bdiv").css({"overflow-x" : "auto"});
-                },
-                //data: [{"id": 1, "remittanceDate": "2016-04-05", "achievementClassName": "d", "achievementClassId": 4, "content": "测试", "money": "5000", "remark": "cs"}],
-                colModel: [{
-                	label: "ID", name: "id", hidden: true
-                }, {
-                	label: "考核项目", name: "title", width: 150, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.title);
-                	}
-                }, {
-                	label: "具体指标", name: "content", width: 350, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.content);
-                	}
-                }, {
-                	label: "数据来源", name: "source", width: 150, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.source);
-                	}
-                }, {
-                	label: "标准", name: "formula", width: 200, align: "left",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.formula);
-                	}
-                }, {
-                	label: "权重", name: "scoreWeight", width: 50, align: "center",
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.scoreWeight);
-                	}
-                }, {
-                	label: "完成情况", name: "performance", width: 350, align: "left", editable: true, edittype: "custom",
-                	editoptions: {
-                		rows: "10",
-                		width: "100%",
-                		custom_element: createTextareaBox,
-                		custom_value: operateTextareaValue,
-                		name: "performance"
-                	},
-                	formatter: function(cellvalue, options, rowObject) {
-                		return decode(rowObject.performance);
-                	}
-                }, {
-                	label: "自评分数", name: "userScore", width: 100, align: "center", editable: true, edittype: "custom",
-                	editoptions: {
-                		custom_element: createNumberBox,
-                		custom_value: operateNumberValue,
-                		name: "userScore"
-                	}
-                }],
-                ondblClickRow: function(id){
-                	if(achievementLastSel2) {
-            			jQuery("#achievementContentDatagrid_selfScore").saveRow(achievementLastSel2, {
-                			url: "clientArray",
-                			aftersavefunc: function() {
-                				getSelfScoreAchievementTotalUserScore();
-                			}
-                		});
-            		}
-            		jQuery("#achievementContentDatagrid_selfScore").editRow(id,true);
-            		achievementLastSel2=id;
-			    },
-				viewrecords: true,
-                height: "100%",
-                //width: "100%",
-                rowNum: 20
-            });
+   				method: "POST",
+   				success: function(data) {
+   					var json = eval("("+data+")");
+   					var leaders = json.leaders;
+   					var gridData = json.contents;
+   					for(var i = 0; i < leaders.length; i ++) {
+   						var leader = leaders[i];
+   						columns.push({label: leader.text+"评分", name: "contentScore"+(i+1), width: 150, align: "left", classes: "vertical_top",
+   	   		            	formatter: function(cellvalue, options, rowObject) {
+   	   		            		var opinion = "暂未填写";
+   	   		            		var score = "未评分";
+   	   		            		if(cellvalue) {
+   	   		            			opinion = cellvalue.opinion;
+   	   		            			score = cellvalue.score;
+   	   		            		}
+   	   		            		//return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>"+score+"</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>"+opinion+"</div></div>";
+   	   		            		return "<div style='line-height:30px;'>分数："+score+"</div><div style='line-height:30px;'>意见："+opinion+"</div>";
+   	   		            	}
+   						});
+   					}
+   					$("#achievementContentDatagrid_selfScore").jqGrid({
+   		   				//url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
+   		                //mtype: "POST",
+   		                shrinkToFit: true,
+   		                /*autowidth: true,
+   		                scrollrows: false,
+   		                scroll: false,*/
+   						styleUI : "Bootstrap",
+   		                datatype: "local",
+   		                gridComplete: function() {
+   		                	$("#achievementContentDatagrid_selfScore").setGridWidth($("#achievement").width()*0.99);
+   		                	//$("#achievementContentDatagrid_selfScore").closest(".ui-jqgrid-bdiv").css({"overflow-x" : "auto"});
+   		                },
+   		             	data: gridData,
+   		                //data: [{"id": 1, "remittanceDate": "2016-04-05", "achievementClassName": "d", "achievementClassId": 4, "content": "测试", "money": "5000", "remark": "cs"}],
+   		                colModel: columns,
+   		                ondblClickRow: function(id){
+   		                	if(achievementLastSel2) {
+   		            			jQuery("#achievementContentDatagrid_selfScore").saveRow(achievementLastSel2, {
+   		                			url: "clientArray",
+   		                			aftersavefunc: function() {
+   		                				getSelfScoreAchievementTotalUserScore();
+   		                			}
+   		                		});
+   		            		}
+   		            		jQuery("#achievementContentDatagrid_selfScore").editRow(id,true);
+   		            		achievementLastSel2=id;
+   					    },
+   						viewrecords: true,
+   		                height: "100%",
+   		                //width: "100%",
+   		                rowNum: 20
+   		            });
+   				}
+   			});
+   			
    		}
    		
    		function generateSelfScoreAchievementLogGrid() {

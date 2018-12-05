@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								${achievement.userScore }
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="text" class="col-md-2 col-sm-4 control-label">当前得分：</label>
 							<div class="col-md-3 col-sm-8 left-label leaderTotalScore">
 								${achievement.leaderScore }
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="col-md-3 col-sm-8 left-label">
 								
 							</div>
-						</div>
+						</div> -->
 			    	</div>
 			    	<div class="box-body">
 			    		<table id="achievementContentDatagrid_leaderScore"></table>
@@ -160,6 +160,127 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		}
    		
    		function generateAuditAchievementContenGrid() {
+   			console.log("开始查询绩效数据");
+   			var id = $("#leaderScoreAchievementForm").find("input.achievementId").val();
+   			var columns = [{
+            	label: "ID", name: "id", hidden: true
+            }, {
+            	label: "考核项目", name: "title", width: 150, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.title);
+            	}
+            }, {
+            	label: "具体指标", name: "content", width: 350, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.content);
+            	}
+            }, {
+            	label: "数据来源", name: "source", width: 150, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.source);
+            	}
+            }, {
+            	label: "标准", name: "formula", width: 200, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.formula);
+            	}
+            }, {
+            	label: "权重", name: "scoreWeight", width: 50, align: "center"
+            }, {
+            	label: "完成情况", name: "performance", width: 350, align: "left",
+            	formatter: function(cellvalue, options, rowObject) {
+            		return decode(rowObject.performance);
+            	}
+            }, {
+            	label: "自评", name: "userScore", width: 50, align: "center"
+            }, {
+            	label: "领导评分", name: "leaderScore", width: 100, align: "center"
+            }];
+   			console.log("开始请求数据");
+   			$.ajax({
+   				url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
+   				method: "POST",
+   				success: function(data) {
+   					console.log("获取到的数据为："+data);
+   					var json = eval("("+data+")");
+   					var leaders = json.leaders;
+   					var gridData = json.contents;
+   					for(var i = 0; i < leaders.length; i ++) {
+   						var leader = leaders[i];
+   						columns.push({label: leader.text+"评分", name: "contentScore"+(i+1), width: 150, align: "left", classes: "vertical_top",
+   	   		            	formatter: function(cellvalue, options, rowObject) {
+   	   		            		var opinion = "暂未填写";
+   	   		            		var score = "未评分";
+   	   		            		if(cellvalue) {
+   	   		            			opinion = cellvalue.opinion;
+   	   		            			score = cellvalue.score;
+   	   		            		}
+   	   		            		//return "<div style='height: 100%;'><div style='height: 30px; text-align: center; margin: 0 auto;'>"+score+"</div><div style='border-top: 1px solid black;height: 30px; text-align: center; vertical-align: middle;'>审核意见</div><div style='border-top: 1px solid black; height: 50px;'>"+opinion+"</div></div>";
+   	   		            		return "<div style='line-height:30px;'>分数："+score+"</div><div style='line-height:30px;'>意见："+opinion+"</div>";
+   	   		            	}
+   						});
+   					}
+   					console.log("开始生成表格");
+   					$("#achievementContentDatagrid_leaderScore").jqGrid({
+   		   				//url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
+   		                //mtype: "POST",
+   		                data: gridData,
+   		                shrinkToFit: true,
+   		                //autowidth: true,
+   		                //scrollrows: false,
+   		                //scroll: false,
+   						styleUI : "Bootstrap",
+   		                datatype: "local",
+   		                //data: [{"id": 1, "remittanceDate": "2016-04-05", "achievementClassName": "d", "achievementClassId": 4, "content": "测试", "money": "5000", "remark": "cs"}],
+   		                colModel: columns,
+   						viewrecords: true,
+   		                height: "100%",
+   		                //width: "100%",
+   		                rowNum: 20,
+   		                subGrid: true,
+   		                subGridOptions: {
+   		                	expandOnLoad: false
+   		                },
+   		                subGridRowColapsed: function(subgrid_id, rowid) {
+   		                	return true;
+   		                },
+   		                subGridRowExpanded: function(subgrid_id, rowid) {
+   		                	//console.log(rowid);
+   		                	var rowData = $("#achievementContentDatagrid_edit").getRowData(rowid);
+   		                	//console.log(rowData);
+   		                	var id = rowData.id;
+   		                	if(rowid) {
+   		                		var tableId = subgrid_id+"_table";
+   		                		var html = "<div style='padding: 10px;'>";
+   		                		html = html + "<table id='"+tableId+"' class='scroll'></table>";
+   		                		html = html + "</div>";
+   		                		var subgrid = $("#"+subgrid_id).html(html);
+   		                		$("#"+tableId).jqGrid({
+   		                			url: getRoot() + "workflow/achievement/queryContentOpinionsByContentId.action?achievementContent.id="+rowid,
+   		                			datatype: "json",
+   		                			height: "100%",
+   		                			shrinkToFit: true,
+   					                autowidth: true,
+   					                scrollrows: false,
+   					                scroll: false,
+   		                			colModel: [{
+   					                	label: "ID", name: "id", hidden: true
+   					                }, {
+   					                	label: "审核人", name: "userName", width: 150, align: "center"
+   					                }, {
+   					                	label: "审核意见", name: "opinion", width: 400, align: "center"
+   					                }, {
+   					                	label: "审核时间", name: "createDate", width: 150, align: "center"
+   					                }]
+   		                		});
+   		                	}
+   		                }
+   		            });
+   				}
+   			});
+   		}
+   		
+   		/*function generateAuditAchievementContenGrid() {
    			var id = $("#leaderScoreAchievementForm").find("input.achievementId").val();
    			$("#achievementContentDatagrid_leaderScore").jqGrid({
    				url: getRoot() + "workflow/achievement/queryContentsByAchievementId.action?achievement.id="+id,
@@ -254,7 +375,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	}
                 }
             });
-   		}
+   		}*/
    	</script>
   </body>
 </html>

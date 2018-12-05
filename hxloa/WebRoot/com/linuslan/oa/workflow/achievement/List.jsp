@@ -667,7 +667,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			for(var i = 0; i < rows.length; i ++) {
    				var content = rows[i];
    				for(var name in content) {
-   					if(!name || ""==$.trim(name) || "operationCell" == name) {
+   					if(!name || ""==$.trim(name) || "operationCell" == name || name.indexOf("contentScore")>=0) {
    						continue;
    					}
    					var value = content[name];
