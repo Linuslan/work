@@ -671,10 +671,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						continue;
    					}
    					var value = content[name];
+   					
+   					if (""==$.trim(value)) {
+	   					BootstrapDialog.danger("有空白项无法提交");
+	   	   				return false;
+   					}
+   					
    					if("id" == name) {
    						var re = /^[0-9]*$/;
    						if(!re.test(value)) {
    							value = "";
+   						}
+   					}
+   					
+   					if("userScore" == name) {
+   						var re = /^[0-9]*$/;
+   						if(!re.test(value)) {
+   							BootstrapDialog.danger("分数出现小数点无法提交");
+   		   	   				return false;
    						}
    					}
    					value = encode(value);

@@ -665,11 +665,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						continue;
    					}
    					var value = content[name];
+  					if (""==$.trim(value)) {
+	   					BootstrapDialog.danger("有空白项无法提交");
+	   	   				return false;
+   					}
    					if("id" == name) {
    						var re = /^[0-9]*$/;
    						if(!re.test(value)) {
    							value = "";
    						}
+   					}
+   					if ("leaderScoreOpinion" == name) {
+	   					if (value.indexOf("同意")>=0) {
+		   					BootstrapDialog.danger("不可用同意等概括词语");
+		   	   				return false;
+	   					}
    					}
    					//var value = content[name];
    					contents.push(param.replace("#index#", i).replace("#prop#", name).replace("#value#", value));
