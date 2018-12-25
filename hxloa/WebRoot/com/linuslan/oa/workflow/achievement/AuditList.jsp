@@ -660,14 +660,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			for(var i = 0; i < rows.length; i ++) {
    				var content = rows[i];
    				console.log(content);
+   				var emptyRow = "1";
    				for(var name in content) {
    					if(!name || ""==$.trim(name) || "operationCell" == name || name.indexOf("contentScore")>=0) {
    						continue;
    					}
    					var value = content[name];
-  					if (""==$.trim(value)) {
-	   					BootstrapDialog.danger("有空白项无法提交");
-	   	   				return false;
+  					if (""!=$.trim(value)) {
+	   					emptyRow = "0";
    					}
    					if("id" == name) {
    						var re = /^[0-9]*$/;
@@ -675,14 +675,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    							value = "";
    						}
    					}
-   					if ("leaderScoreOpinion" == name) {
+   					/*if ("leaderScoreOpinion" == name) {
 	   					if (value.indexOf("同意")>=0) {
 		   					BootstrapDialog.danger("不可用同意等概括词语");
 		   	   				return false;
 	   					}
-   					}
+   					}*/
    					//var value = content[name];
    					contents.push(param.replace("#index#", i).replace("#prop#", name).replace("#value#", value));
+   				}
+   				if(emptyRow == "1") {
+   					BootstrapDialog.danger("提交失败，您有空行未填写");
+   					return false;
    				}
    			}
    			if(0 >= contents.length) {

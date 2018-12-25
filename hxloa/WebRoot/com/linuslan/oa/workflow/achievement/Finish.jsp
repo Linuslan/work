@@ -72,6 +72,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								${achievement.userScore }
 							</div>
 						</div>
+						<div class="form-group">
+							<label for="text" class="col-md-2 col-sm-4 control-label">备注：</label>
+							<div class="col-md-10 col-sm-8 left-label totalScore" style="color: red">
+								1、绩效在创建、自评、提交领导评分，这三个阶段所有需填项必需填满，绩效才可以提交。（如以下情况：①员工创建绩效时，多添加两行无内容时，提示提交不了绩效； ②在自评阶段，如有空白或者分数出现小数点的情况也无法进行提交；③领导在评分及评分意见出现空白无内容时也无法提交绩效；）
+								<br />
+								2、 直属领导需对员工每项绩效指标进行评分意见填写，不可用同意等概括词语，领导1意见、领导2意见如对直属上级的评分认同，可以“同意”，或是填写其它意见。
+							</div>
+						</div>
 						<!-- <div class="form-group">
 							<label for="text" class="col-md-2 col-sm-4 control-label">当前得分：</label>
 							<div class="col-md-3 col-sm-8 left-label leaderTotalScore">
