@@ -402,8 +402,9 @@ public class IAchievementServiceImpl extends IBaseServiceImpl implements
 	public boolean executeAudit(Achievement achievement, Achievement persist, List<AchievementContent> contents, List<AchievementContent> persistContens, int passType, String opinion) {
 		/*
 		 * 如果是评分阶段，则添加评分记录
+		 * 6：普通领导评分，7：总经理评分
 		 */
-		if(6 == persist.getFlowStatus()) {
+		if(6 == persist.getFlowStatus() || 7 == persist.getFlowStatus()) {
 			List<AchievementContentScore> scores = this.generateContentScoreLog(contents);
 			this.achievementDao.saveContentScoreBatch(scores);
 		}

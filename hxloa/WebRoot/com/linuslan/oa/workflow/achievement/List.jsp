@@ -575,7 +575,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                				totalScore = getSelfScoreAchievementTotalUserScore();
 	                			}
 	                		});
-			    			var contents = getAchievementContents($grid);
+			    			var contents = getAchievementContents($grid, returnType);
 			    			if(!contents) {
 			    				return false;
 			    			}
@@ -651,7 +651,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        });
    		}
    		
-   		function getAchievementContents($grid) {
+   		function getAchievementContents($grid, returnType) {
    			if(!$grid || 0 >= $grid.length) {
    				BootstrapDialog.error("获取报销项目异常");
    				return false;
@@ -672,8 +672,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						continue;
    					}
    					var value = content[name];
-   					if (""!=$.trim(value)) {
-	   					emptyRow = "0";
+   					if(returnType == "selfScore") {
+   						if("" == $.trim(value)) {
+   							BootstrapDialog.danger("有空白项无法提交");
+   		   					return false;
+   						}
+   					} else {
+   						if (""!=$.trim(value)) {
+   		   					emptyRow = "0";
+   	   					}
    					}
    					
    					if("id" == name) {
@@ -694,7 +701,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    					//var value = content[name];
    					contents.push(param.replace("#index#", i).replace("#prop#", name).replace("#value#", value));
    				}
-   				if(emptyRow == "1") {
+   				if(returnType != "selfScore" && emptyRow == "1") {
    					BootstrapDialog.danger("提交失败，您有空行未填写");
    					return false;
    				}

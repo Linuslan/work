@@ -173,12 +173,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			var columns = [{
             	label: "ID", name: "id", hidden: true
             }, {
-            	label: "考核项目", name: "title", width: 150, align: "left",
+            	label: "考核项目", name: "title", width: 100, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.title);
             	}
             }, {
-            	label: "具体指标", name: "content", width: 350, align: "left",
+            	label: "具体指标", name: "content", width: 250, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.content);
             	}
@@ -195,12 +195,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }, {
             	label: "权重", name: "scoreWeight", width: 50, align: "center"
             }, {
-            	label: "完成情况", name: "performance", width: 250, align: "left",
+            	label: "完成情况", name: "performance", width: 200, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.performance);
             	}
             }, {
             	label: "自评", name: "userScore", width: 50, align: "center"
+            }, {
+            	label: "领导评分", name: "leaderScore", width: 50, align: "center"
             }];
    			console.log("开始请求数据");
    			$.ajax({
@@ -213,7 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    					var gridData = json.contents;
    					for(var i = 0; i < leaders.length; i ++) {
    						var leader = leaders[i];
-   						columns.push({label: leader.text+"评分", name: "contentScore"+(i+1), width: 150, align: "left", classes: "vertical_top",
+   						columns.push({label: leader.text+"评分", name: "contentScore"+(i+1), width: 130, align: "left", classes: "vertical_top",
    	   		            	formatter: function(cellvalue, options, rowObject) {
    	   		            		var opinion = "暂未填写";
    	   		            		var score = "未评分";
@@ -237,6 +239,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		                //scroll: false,
    						styleUI : "Bootstrap",
    		                datatype: "local",
+		                gridComplete: function() {
+		                	$("#achievementContentDatagrid_leaderScore").setGridWidth($("#achievement").width()*0.99);
+		                	//$("#achievementContentDatagrid_leaderScore").closest(".ui-jqgrid-bdiv").css({"overflow-x" : "auto"});
+		                },
    		                //data: [{"id": 1, "remittanceDate": "2016-04-05", "achievementClassName": "d", "achievementClassId": 4, "content": "测试", "money": "5000", "remark": "cs"}],
    		                colModel: columns,
    						viewrecords: true,

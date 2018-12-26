@@ -319,7 +319,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			
    			achievementDialog = BootstrapDialog.show({
 			    title: "绩效详情",
-			    width: "90%",
+			    width: "95%",
 			    type: BootstrapDialog.TYPE_DEFAULT,
 			    message: $("<div></div>").load(getRoot() + "workflow/achievement/queryById.action?returnType="+returnType+"&achievement.id="+id),
 			    draggable: true,

@@ -535,8 +535,20 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				}
 				try {
 					Date probationEndDate = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("PROBATION_END_TIME")), "yyyy-MM-dd");
-					if(null != probationEndDate
-							&& (salaryStartDate.before(probationEndDate) || salaryStartDate.equals(probationEndDate))) {
+					Date probationStartDate = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("PROBATION_START_TIME")), "yyyy-MM-dd");
+					boolean isProbation = false;
+					if(null != probationEndDate && null != probationStartDate) {
+						if((salaryStartDate.before(probationEndDate) || salaryStartDate.equals(probationEndDate))
+								&& (salaryStartDate.after(probationStartDate) || salaryStartDate.equals(probationStartDate))) {
+							isProbation = true;
+						}
+						if((salaryEndDate.before(probationEndDate) || salaryEndDate.equals(probationEndDate))
+								&& (salaryEndDate.after(probationStartDate) || salaryEndDate.equals(probationStartDate))) {
+							isProbation = true;
+						}
+					}
+					
+					if(isProbation) {
 						achievementSalary = CodeUtil.parseBigDecimal(0D);
 						basicSalary = probationSalary;
 						postSalary = CodeUtil.parseBigDecimal(0D);
