@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import com.linuslan.oa.common.IBaseDaoImpl;
 import com.linuslan.oa.system.userSalary.model.UserSalary;
 import com.linuslan.oa.system.userSalary.dao.IUserSalaryDao;
+import com.linuslan.oa.util.DateUtil;
 import com.linuslan.oa.util.Page;
 
 @Component("userSalaryDao")
@@ -60,12 +61,16 @@ public class IUserSalaryDaoImpl extends IBaseDaoImpl implements IUserSalaryDao {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>> ();
 		//String sql = "SELECT t.id, t.name, t3.id department_id, t3.name department_name, t3.company_id, t2.* FROM sys_user t LEFT JOIN sys_department t3 ON t3.id=t.department_id LEFT JOIN sys_user_salary t2 ON t2.user_id=t.id AND t2.is_delete=0 AND t2.status=1 WHERE t.is_delete=0 AND t.is_leave=1";
 		//String sql = "SELECT t2.company_id, t.* FROM sys_user_salary t LEFT JOIN sys_department t2 ON t2.id=t.department_id WHERE t.status=1 AND t.is_delete=0 AND t.user_id IN (SELECT t3.id FROM sys_user t3 WHERE t3.is_delete=0 AND t3.is_leave=1)";
+		String dateStr = year+"-"+(month > 9 ? month:"0"+month);
+		int maxDay = DateUtil.getMaxDayOfMonth(dateStr, "yyyy-MM");
+		dateStr = dateStr+"-"+maxDay;
 		//增加了绩效
-		String sql = "SELECT t2.company_id, t3.name user_name, t4.leader_score, t4.add_score, t4.add_money, t.* FROM sys_user_salary t LEFT JOIN sys_department t2 ON t2.id=t.department_id LEFT JOIN sys_user t3 ON t3.id=t.user_id LEFT JOIN wf_achievement t4 ON t4.year=:year AND t4.month=:month AND t4.status=4 AND t4.is_delete=0 AND t4.user_id=t.user_id WHERE t.last_status=1 AND t.is_delete=0 AND t.user_id IN (SELECT t3.id FROM sys_user t3 WHERE t3.is_delete=0 AND t3.is_leave=1)";
+		String sql = "SELECT t2.company_id, t3.name user_name, t4.leader_score, t4.add_score, t4.add_money, t.* FROM sys_user_salary t LEFT JOIN sys_department t2 ON t2.id=t.department_id LEFT JOIN sys_user t3 ON t3.id=t.user_id LEFT JOIN wf_achievement t4 ON t4.year=:year AND t4.month=:month AND t4.status=4 AND t4.is_delete=0 AND t4.user_id=t.user_id WHERE (t.last_status=1 OR t.is_force_effect=1) AND (t.probation_start_time IS NULL OR (t.probation_start_time IS NOT NULL AND t.probation_start_time < to_date(:date, 'yyyy-mm-dd'))) AND t.is_delete=0 AND t.user_id IN (SELECT t3.id FROM sys_user t3 WHERE t3.is_delete=0 AND t3.is_leave=1)";
 		Session session = this.sessionFactory.getCurrentSession();
 		SQLQuery sqlQuery = session.createSQLQuery(sql);
 		sqlQuery.setParameter("year", year);
 		sqlQuery.setParameter("month", month);
+		sqlQuery.setParameter("date", dateStr);
 		sqlQuery.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 		list.addAll(sqlQuery.list());
 		return list;

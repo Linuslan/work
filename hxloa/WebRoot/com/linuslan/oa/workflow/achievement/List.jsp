@@ -672,7 +672,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						continue;
    					}
    					var value = content[name];
-   					if(returnType == "selfScore") {
+   					if("" == $.trim(value)) {
+						BootstrapDialog.danger("有空白项无法提交");
+	   					return false;
+					}
+   					/*if(returnType == "selfScore") {
    						if("" == $.trim(value)) {
    							BootstrapDialog.danger("有空白项无法提交");
    		   					return false;
@@ -681,7 +685,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						if (""!=$.trim(value)) {
    		   					emptyRow = "0";
    	   					}
-   					}
+   					}*/
    					
    					if("id" == name) {
    						var re = /^[0-9]*$/;
@@ -701,10 +705,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    					//var value = content[name];
    					contents.push(param.replace("#index#", i).replace("#prop#", name).replace("#value#", value));
    				}
-   				if(returnType != "selfScore" && emptyRow == "1") {
+   				/*if(returnType != "selfScore" && emptyRow == "1") {
    					BootstrapDialog.danger("提交失败，您有空行未填写");
    					return false;
-   				}
+   				}*/
    				contents.push(param.replace("#index#", i).replace("#prop#", "orderNo").replace("#value#", i));
    			}
    			if(0 >= contents.length) {

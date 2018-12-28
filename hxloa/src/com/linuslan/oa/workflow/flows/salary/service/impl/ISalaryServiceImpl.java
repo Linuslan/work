@@ -501,8 +501,6 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 		if(null != companyId && null != userId && null != departmentId) {
 			content = new SalaryContent();
 			try {
-				Date seniorityStartDate = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("SERVICE_AGE_SALARY_START_DATE")), "yyyy-MM-dd");
-				seniorityStartDateStr = DateUtil.parseDateToStr(seniorityStartDate, "yyyy-MM-dd");
 				Date salaryEndDate = DateUtil.parseStrToDate(salaryEndDateStr, "yyyy-MM-dd");
 				Date salaryStartDate = DateUtil.parseStrToDate(salaryStartDateStr, "yyyy-MM-dd");
 				try {
@@ -556,6 +554,8 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 				} catch(Exception ex) {
 					ex.printStackTrace();
 				}
+				Date seniorityStartDate = DateUtil.parseStrToDate(CodeUtil.parseString(userSalary.get("SERVICE_AGE_SALARY_START_DATE")), "yyyy-MM-dd");
+				seniorityStartDateStr = DateUtil.parseDateToStr(seniorityStartDate, "yyyy-MM-dd");
 			} catch(Exception ex) {
 				ex.printStackTrace();
 				seniorityStartDateStr = "";
