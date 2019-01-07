@@ -27,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    	<form id="viewAchievementForm" action="" class="form-horizontal">
    		<input class="achievementId" type="hidden" name="achievement.id" id="viewAchievementId" value="${achievement.id }" />
+		<input name="date" type="hidden" value="${achievement.year}-${achievement.month}"/>
    		<div class="nav-tabs-top-border">
    			<ul class="nav nav-tabs">
    				<li class="active">

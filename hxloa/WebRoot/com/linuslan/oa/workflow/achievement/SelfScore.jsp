@@ -35,7 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    	<form id="selfScoreAchievementForm" action="" class="form-horizontal">
    		<input id="editAchievementId" class="achievementId" name="achievement.id" type="hidden" value="${achievement.id }" />
-   		<input id="editAchievementId" class="achievementUserScore" name="achievement.userScore" type="hidden" value="${achievement.userScore }" />
+   		<input id="editAchievementUserScore" class="achievementUserScore" name="achievement.userScore" type="hidden" value="${achievement.userScore }" />
+		<input name="date" type="hidden" value="${achievement.year}-${achievement.month}"/>
    		<div class="nav-tabs-top-border">
    			<ul class="nav nav-tabs">
    				<li class="active">

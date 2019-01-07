@@ -190,11 +190,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    			var $grid = dialog.getModalBody().find("form").find("table");
 				    			//将未保存的先保存
 				    			jQuery("#achievementContentDatagrid_add").jqGrid("saveRow", achievementLastSel2, false, "clientArray");
-				    			var contents = getAchievementContents($grid);
+                                var form = dialog.getModalBody().find("form");
+                                var dateVal = form.find("input[name=date]").val();
+                                var year = dateVal.split("-")[0];
+                                var month = dateVal.split("-")[1];
+				    			var contents = getAchievementContents($grid, year, month);
 				    			if(!contents) {
 				    				return false;
 				    			}
-				    			var form = dialog.getModalBody().find("form");
 				    			var $button = this;
 				    			$.ajax({
 				    				url: getRoot() + "workflow/achievement/add.action",
@@ -253,11 +256,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    	                	var $grid = dialog.getModalBody().find("form").find("table");
 							    			//将未保存的先保存
 							    			jQuery("#achievementContentDatagrid_add").jqGrid("saveRow", achievementLastSel2, false, "clientArray");
-							    			var contents = getAchievementContents($grid);
+                                            var form = dialog.getModalBody().find("form");
+                                            var dateVal = form.find("input[name=date]").val();
+                                            var year = dateVal.split("-")[0];
+                                            var month = dateVal.split("-")[1];
+							    			var contents = getAchievementContents($grid, year, month);
 							    			if(!contents) {
 							    				return false;
 							    			}
-							    			var form = dialog.getModalBody().find("form");
+
 							    			$.ajax({
 							    				url: getRoot() + "workflow/achievement/commit.action?type=update",
 							    				data: form.serialize()+"&"+contents.join("&")+"&passType=0",
@@ -331,11 +338,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    			var $grid = dialog.getModalBody().find("form").find("table#achievementContentDatagrid_edit");
 			    			//将未保存的先保存
 			    			jQuery("#achievementContentDatagrid_edit").jqGrid("saveRow", achievementLastSel2, false, "clientArray");
-			    			var contents = getAchievementContents($grid);
+                            var form = dialog.getModalBody().find("form");
+                            var dateVal = form.find("input[name=date]").val();
+                            var year = dateVal.split("-")[0];
+                            var month = dateVal.split("-")[1];
+			    			var contents = getAchievementContents($grid, year, month);
 			    			if(!contents) {
 			    				return false;
 			    			}
-			    			var form = dialog.getModalBody().find("form");
+
 			    			$.ajax({
 			    				url: getRoot() + "workflow/achievement/update.action",
 			    				data: form.serialize()+"&"+contents.join("&"),
@@ -393,11 +404,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    	                	var $grid = dialog.getModalBody().find("form").find("table#achievementContentDatagrid_edit");
 						    			//将未保存的先保存
 						    			jQuery("#achievementContentDatagrid_edit").jqGrid("saveRow", achievementLastSel2, false, "clientArray");
-						    			var contents = getAchievementContents($grid);
+                                        var form = dialog.getModalBody().find("form");
+                                        var dateVal = form.find("input[name=date]").val();
+                                        var year = dateVal.split("-")[0];
+                                        var month = dateVal.split("-")[1];
+						    			var contents = getAchievementContents($grid, year, month);
 						    			if(!contents) {
 						    				return false;
 						    			}
-						    			var form = dialog.getModalBody().find("form");
 						    			$.ajax({
 						    				url: getRoot() + "workflow/achievement/commit.action?type=update",
 						    				data: form.serialize()+"&"+contents.join("&")+"&passType=0",
@@ -575,12 +589,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                				totalScore = getSelfScoreAchievementTotalUserScore();
 	                			}
 	                		});
-			    			var contents = getAchievementContents($grid, returnType);
+                            var $form = dialog.getModalBody().find("form");
+                            var dateVal = $form.find("input[name=date]").val();
+                            console.log(dateVal);
+                            var year = dateVal.split("-")[0];
+                            var month = dateVal.split("-")[1];
+                            var contents = getAchievementContents($grid, year, month);
 			    			if(!contents) {
 			    				return false;
 			    			}
 			    			var $button = this;
-			    			var $form = dialog.getModalBody().find("form");
+
 			    			BootstrapDialog.confirm({
 					            title: "温馨提示",
 					            message: "您确定自评分数为<font color='red'>"+totalScore+"</font>并提交吗？",
@@ -651,7 +670,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        });
    		}
    		
-   		function getAchievementContents($grid, returnType) {
+   		function getAchievementContents($grid, year, month) {
    			if(!$grid || 0 >= $grid.length) {
    				BootstrapDialog.error("获取报销项目异常");
    				return false;
@@ -672,10 +691,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						continue;
    					}
    					var value = content[name];
-   					if("" == $.trim(value)) {
-						BootstrapDialog.danger("有空白项无法提交");
-	   					return false;
+   					if(year && parseInt(year) > 2018) {
+                        if("" == $.trim(value)) {
+                            BootstrapDialog.danger("有空白项无法提交");
+                            return false;
+                        }
 					}
+
    					/*if(returnType == "selfScore") {
    						if("" == $.trim(value)) {
    							BootstrapDialog.danger("有空白项无法提交");
