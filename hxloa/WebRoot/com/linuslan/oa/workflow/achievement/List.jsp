@@ -194,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 var dateVal = form.find("input[name=date]").val();
                                 var year = dateVal.split("-")[0];
                                 var month = dateVal.split("-")[1];
-				    			var contents = getAchievementContents($grid, year, month);
+				    			var contents = getAchievementContents($grid, year, month, 0);
 				    			if(!contents) {
 				    				return false;
 				    			}
@@ -260,7 +260,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             var dateVal = form.find("input[name=date]").val();
                                             var year = dateVal.split("-")[0];
                                             var month = dateVal.split("-")[1];
-							    			var contents = getAchievementContents($grid, year, month);
+							    			var contents = getAchievementContents($grid, year, month, 1);
 							    			if(!contents) {
 							    				return false;
 							    			}
@@ -342,7 +342,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             var dateVal = form.find("input[name=date]").val();
                             var year = dateVal.split("-")[0];
                             var month = dateVal.split("-")[1];
-			    			var contents = getAchievementContents($grid, year, month);
+			    			var contents = getAchievementContents($grid, year, month, 0);
 			    			if(!contents) {
 			    				return false;
 			    			}
@@ -408,7 +408,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         var dateVal = form.find("input[name=date]").val();
                                         var year = dateVal.split("-")[0];
                                         var month = dateVal.split("-")[1];
-						    			var contents = getAchievementContents($grid, year, month);
+						    			var contents = getAchievementContents($grid, year, month, 1);
 						    			if(!contents) {
 						    				return false;
 						    			}
@@ -594,7 +594,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             console.log(dateVal);
                             var year = dateVal.split("-")[0];
                             var month = dateVal.split("-")[1];
-                            var contents = getAchievementContents($grid, year, month);
+                            var contents = getAchievementContents($grid, year, month, 1);
 			    			if(!contents) {
 			    				return false;
 			    			}
@@ -670,7 +670,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        });
    		}
    		
-   		function getAchievementContents($grid, year, month) {
+   		function getAchievementContents($grid, year, month, isCommit) {
    			if(!$grid || 0 >= $grid.length) {
    				BootstrapDialog.error("获取报销项目异常");
    				return false;
@@ -691,7 +691,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						continue;
    					}
    					var value = content[name];
-   					if(year && parseInt(year) > 2018) {
+   					if(year && parseInt(year) > 2018 && isCommit == 1) {
                         if("" == $.trim(value)) {
                             BootstrapDialog.danger("有空白项无法提交");
                             return false;
