@@ -198,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		return decode(rowObject.content);
             	}
             }, {
-            	label: "数据来源", name: "source", width: 200, align: "left",
+            	label: "数据来源", name: "source", width: 170, align: "left",
             	formatter: function(cellvalue, options, rowObject) {
             		return decode(rowObject.source);
             	}
@@ -217,7 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }, {
             	label: "自评", name: "userScore", width: 50, align: "center"
             }, {
-            	label: "领导评分", name: "leaderScore", width: 50, align: "center", editable: true, edittype: "custom",
+            	label: "领导评分", name: "leaderScore", width: 80, align: "center", editable: true, edittype: "custom",
             	editoptions: {custom_element: createNumberBox, custom_value: operateNumberValue, name: "leaderScore"},
             	formatter: function(cellValue, options, rowObject) {
             		if(rowObject.leaderScore <= 0) {
