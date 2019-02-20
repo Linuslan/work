@@ -193,8 +193,9 @@ public class OAUtil {
 		try {
 			//2019年，使用新的实发工资的计算公式
 			boolean newFormula = false;
+			//2019年1月开始使用新工资的计算方式
 			if(sc.getYear().intValue() >= 2018) {
-				if(sc.getMonth().intValue() > 1) {
+				if(sc.getMonth().intValue() >= 1) {
 					newFormula = true;
 				}
 			}
