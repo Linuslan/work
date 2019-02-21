@@ -236,20 +236,20 @@ public class OAUtil {
 			float money = sc.getPretaxSalary().floatValue();
 			if(isNew) {
 				float balance = money - 5000;
-				if(balance <= 3000 && balance > 0) {
+				if(balance <= 36000 && balance > 0) {
 					taxMoney = balance*0.03;
-				} else if(balance > 3000 && balance <= 12000) {
-					taxMoney = balance*0.1 - 210;
-				} else if(balance > 12000 && balance <= 25000) {
-					taxMoney = balance*0.2 - 1410;
-				} else if(balance > 25000 && balance <= 35000) {
-					taxMoney = balance*0.25 - 2660;
-				} else if(balance > 35000 && balance <= 55000) {
-					taxMoney = balance*0.3 - 4410;
-				} else if(balance > 55000 && balance <= 80000) {
-					taxMoney = balance*0.35 - 7160;
-				} else if(balance > 80000) {
-					taxMoney = balance*0.45 - 15160;
+				} else if(balance > 36000 && balance <= 144000) {
+					taxMoney = balance*0.1 - 2520;
+				} else if(balance > 144000 && balance <= 300000) {
+					taxMoney = balance*0.2 - 16920;
+				} else if(balance > 300000 && balance <= 420000) {
+					taxMoney = balance*0.25 - 31920;
+				} else if(balance > 420000 && balance <= 660000) {
+					taxMoney = balance*0.3 - 52920;
+				} else if(balance > 660000 && balance <= 960000) {
+					taxMoney = balance*0.35 - 85920;
+				} else if(balance > 960000) {
+					taxMoney = balance*0.45 - 181920;
 				}
 			} else {
 				float balance = money - 3500;
