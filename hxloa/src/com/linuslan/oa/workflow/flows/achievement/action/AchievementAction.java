@@ -248,19 +248,19 @@ public class AchievementAction extends BaseAction {
 						leaderId = score.getUserId();
 						User leader = this.userService.queryById(leaderId);
 						Long leaderGroupId = leader.getGroupId();
-						if(null != groupList.get(0)
+						if(groupList.size() > 0 && null != groupList.get(0)
 								&& leaderGroupId.longValue() == groupList.get(0).getId().longValue()) {
 							if(null == content.getContentScore1()
 									|| content.getContentScore1().getId() < score.getId()) {
 								content.setContentScore1(score);
 							}
-						} else if(null != groupList.get(1)
+						} else if(groupList.size() > 1 && null != groupList.get(1)
 								&& leaderGroupId.longValue() == groupList.get(1).getId().longValue()) {
 							if(null == content.getContentScore2()
 									|| content.getContentScore2().getId() < score.getId()) {
 								content.setContentScore2(score);
 							}
-						} else if(null != groupList.get(2)
+						} else if(groupList.size() > 2 && null != groupList.get(2)
 								&& leaderGroupId.longValue() == groupList.get(2).getId().longValue()) {
 							if(null == content.getContentScore3()
 									|| content.getContentScore3().getId() < score.getId()) {

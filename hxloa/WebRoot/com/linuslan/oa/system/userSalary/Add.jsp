@@ -214,12 +214,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="input-group-addon">
 							<i class="fa fa-calendar"></i>
 						</div>
-						<input name="userSalary.housingSubsidyStartTime" type="text" value="" readonly="readonly" class="form-control pull-right date showText" id="text">
+						<input name="userSalary.housingSubsidyStartTime" type="text" value="" readonly="readonly" class="form-control pull-right date showText">
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="name" class="col-sm-2 control-label">工作餐补贴：</label>
+				<label class="col-sm-2 control-label">子女抚养费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.childcareExpense" type="number" value="0" class="form-control">
+				</div>
+				<label class="col-sm-2 control-label">继续教育费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.continuingEducationFee" type="number" value="0" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">大病医疗费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.seriousIllnessExpense" type="number" value="0" class="form-control">
+				</div>
+				<label class="col-sm-2 control-label">住房贷款利息：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.housingLoan" type="number" value="0" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">住房租金费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.housingRent" type="number" value="0" class="form-control">
+				</div>
+				<label class="col-sm-2 control-label">赡养老人费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.alimony" type="number" value="0" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">工作餐补贴：</label>
 				<div class="col-md-4 col-sm-10 no-padding">
 					<input name="userSalary.mealSubsidy" type="text" value="0" class="form-control">
 				</div>

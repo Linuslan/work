@@ -170,7 +170,6 @@ public class User {
 	
 	@Column(name="hiredate")
 	private Date hiredate;
-
 	public Long getId() {
 		return id;
 	}

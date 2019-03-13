@@ -117,10 +117,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
    					</div>
    				</form>
-   				<div class="toolbar with-border">
+   				<!--<div class="toolbar with-border">
    					<button class="btn btn-success btn-sm" data-toggle="tooltip" title="批量通过" id="passAchievementBatch"><i class="fa fa-fw fa-share"></i>批量通过</button>
    					<button class="btn btn-danger btn-sm" data-toggle="tooltip" title="批量退回" id="rejectAchievementBatch"><i class="fa fa-fw fa-share"></i>批量退回</button>
-   				</div>
+   				</div>-->
    				<div class="box-body">
    					<table id="achievementScoreDatagrid"></table>
    					<div id="achievementScoreDatagridPager"></div>
@@ -666,6 +666,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    						continue;
    					}
    					var value = content[name];
+                    if("leaderScoreOpinion" == name) {
+                        if(!value) {
+                            BootstrapDialog.danger("有一项审核意见为空，请填写");
+                            return false;
+                        }
+                    }
   					if (""!=$.trim(value)) {
 	   					emptyRow = "0";
    					}

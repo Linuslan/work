@@ -221,6 +221,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">子女抚养费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.childcareExpense" type="text" value="${userSalary.childcareExpense}" class="form-control">
+				</div>
+				<label class="col-sm-2 control-label">继续教育费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.continuingEducationFee" type="text" value="${userSalary.continuingEducationFee}" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">大病医疗费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.seriousIllnessExpense" type="text" value="${userSalary.seriousIllnessExpense}" class="form-control">
+				</div>
+				<label class="col-sm-2 control-label">住房贷款利息：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.housingLoan" type="text" value="${userSalary.housingLoan}" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">住房租金费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.housingRent" type="text" value="${userSalary.housingRent}" class="form-control">
+				</div>
+				<label class="col-sm-2 control-label">赡养老人费：</label>
+				<div class="col-md-4 col-sm-10 no-padding">
+					<input name="userSalary.alimony" type="text" value="${userSalary.alimony}" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">工作餐补贴：</label>
 				<div class="col-md-4 col-sm-10 no-padding">
 					<input name="userSalary.mealSubsidy" type="text" value="${userSalary.mealSubsidy }" class="form-control">

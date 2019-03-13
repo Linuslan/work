@@ -227,6 +227,30 @@ public class UserSalary {
 	@Column(name="housing_subsidy_start_time")
 	private Date housingSubsidyStartTime;
 
+	//子女抚养费
+	@Column(name="childcare_expense")
+	private BigDecimal childcareExpense;
+
+	//继续教育费
+	@Column(name="continuing_education_fee")
+	private BigDecimal continuingEducationFee;
+
+	//大病医疗费
+	@Column(name="serious_illness_expense")
+	private BigDecimal seriousIllnessExpense;
+
+	//住房贷款
+	@Column(name="housing_loan")
+	private BigDecimal housingLoan;
+
+	//房租
+	@Column(name="housing_rent")
+	private BigDecimal housingRent;
+
+	//老人赡养费
+	@Column(name="alimony")
+	private BigDecimal alimony;
+
 	public Long getId() {
 		return id;
 	}
@@ -556,5 +580,53 @@ public class UserSalary {
 
 	public void setHousingSubsidyStartTime(Date housingSubsidyStartTime) {
 		this.housingSubsidyStartTime = housingSubsidyStartTime;
+	}
+
+	public BigDecimal getChildcareExpense() {
+		return childcareExpense;
+	}
+
+	public void setChildcareExpense(BigDecimal childcareExpense) {
+		this.childcareExpense = childcareExpense;
+	}
+
+	public BigDecimal getContinuingEducationFee() {
+		return continuingEducationFee;
+	}
+
+	public void setContinuingEducationFee(BigDecimal continuingEducationFee) {
+		this.continuingEducationFee = continuingEducationFee;
+	}
+
+	public BigDecimal getSeriousIllnessExpense() {
+		return seriousIllnessExpense;
+	}
+
+	public void setSeriousIllnessExpense(BigDecimal seriousIllnessExpense) {
+		this.seriousIllnessExpense = seriousIllnessExpense;
+	}
+
+	public BigDecimal getHousingLoan() {
+		return housingLoan;
+	}
+
+	public void setHousingLoan(BigDecimal housingLoan) {
+		this.housingLoan = housingLoan;
+	}
+
+	public BigDecimal getHousingRent() {
+		return housingRent;
+	}
+
+	public void setHousingRent(BigDecimal housingRent) {
+		this.housingRent = housingRent;
+	}
+
+	public BigDecimal getAlimony() {
+		return alimony;
+	}
+
+	public void setAlimony(BigDecimal alimony) {
+		this.alimony = alimony;
 	}
 }

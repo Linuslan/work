@@ -492,6 +492,12 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 		BigDecimal travelAllowance = CodeUtil.parseBigDecimal(userSalary.get("TRAVEL_ALLOWANCE"));
 		BigDecimal mealSubsidy = CodeUtil.parseBigDecimal(userSalary.get("MEAL_SUBSIDY"));
 		BigDecimal serviceAgeSalary = CodeUtil.parseBigDecimal(userSalary.get("SERVICE_AGE_SALARY"));
+		BigDecimal childcareExpense = CodeUtil.parseBigDecimal(userSalary.get("CHILDCARE_EXPENSE"));
+		BigDecimal continuingEducationFee = CodeUtil.parseBigDecimal(userSalary.get("CONTINUING_EDUCATION_FEE"));
+		BigDecimal seriousIllnessExpense = CodeUtil.parseBigDecimal(userSalary.get("SERIOUS_ILLNESS_EXPENSE"));
+		BigDecimal housingLoan = CodeUtil.parseBigDecimal(userSalary.get("HOUSING_LOAN"));
+		BigDecimal housingRent = CodeUtil.parseBigDecimal(userSalary.get("HOUSING_RENT"));
+		BigDecimal alimony = CodeUtil.parseBigDecimal(userSalary.get("ALIMONY"));
 		String seniorityStartDateStr = "";
 		String salaryDate = year + "-" + (month>9 ? month:"0"+month);
 		int maxDay = DateUtil.getMaxDayOfMonth(salaryDate, "yyyy-MM");
@@ -591,6 +597,12 @@ public class ISalaryServiceImpl extends IBaseServiceImpl implements
 			content.setTypeId(typeId);
 			content.setUserId(userId);
 			content.setUserName(userName);
+			content.setChildcareExpense(childcareExpense);
+			content.setContinuingEducationFee(continuingEducationFee);
+			content.setSeriousIllnessExpense(seriousIllnessExpense);
+			content.setHousingLoan(housingLoan);
+			content.setHousingRent(housingRent);
+			content.setAlimony(alimony);
 		}
 		return content;
 	}
